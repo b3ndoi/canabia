@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif -->
-                    <form action="/products/{{$product->slug}}" method="post" enctype="multipart/form-data">
+                    <form action="/admin/products/{{$product->slug}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                         {{csrf_field()}}
                         <div class='form-group'>

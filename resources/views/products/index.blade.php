@@ -8,7 +8,7 @@
                 <div class="card-header">Products</div>
 
                 <div class="card-body">
-                <a href="/products/create" class="btn btn-success mb-3">Create New Product</a>
+                <a href="{{ route('product.create') }}" class="btn btn-success mb-3">Create New Product</a>
 
                     <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -29,7 +29,7 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td>
-                                        <img src="{{$product->getImage()}}" alt="" width="150px" class="img-fluid">
+                                        <img src="{{$product->image}}" alt="" width="150px" class="img-fluid">
                                     </td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->price}}</td>

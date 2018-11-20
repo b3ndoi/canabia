@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif -->
-                    <form action="/categories/{{$category->id}}" method="post">
+                    <form action="/admin/categories/{{$category->id}}" method="post">
                         <input type="hidden" name="_method" value="PUT">
                         {{csrf_field()}}
                         <div class='form-group'>

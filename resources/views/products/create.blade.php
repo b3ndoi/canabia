@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif -->
-                    <form action="/products" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class='form-group'>
                             <label for='name'>Name</label>

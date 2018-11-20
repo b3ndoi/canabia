@@ -18,19 +18,28 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/categories', 'CategoryController@index')->name('category.index');
-Route::get('/categories/create', 'CategoryController@create')->name('category.create');
-Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('category.edit');
-Route::put('/categories/{category}', 'CategoryController@update')->name('category.update');
-Route::post('/categories', 'CategoryController@store')->name('category.store');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-Route::get('/products/create', 'ProductController@create')->name('product.create');
-Route::get('/products/{slug}/edit', 'ProductController@edit')->name('product.edit');
-Route::put('/products/{slug}', 'ProductController@update')->name('product.update');
-Route::post('/products', 'ProductController@store')->name('product.store');
-Route::get('/products', 'ProductController@index')->name('product.index');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/categories', 'CategoryController@index')->name('category.index');
+    Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+    Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('category.edit');
+    Route::put('/categories/{category}', 'CategoryController@update')->name('category.update');
+    Route::post('/categories', 'CategoryController@store')->name('category.store');
+
+    Route::get('/products/create', 'ProductController@create')->name('product.create');
+    Route::get('/products/{slug}/edit', 'ProductController@edit')->name('product.edit');
+    Route::put('/products/{slug}', 'ProductController@update')->name('product.update');
+    Route::post('/products', 'ProductController@store')->name('product.store');
+    Route::get('/products', 'ProductController@index')->name('product.index');
+
+    Route::post('/newsletter', 'NewsletterController@store')->name('newsletter.store');
+    Route::get('/newsletters', 'NewsletterController@index')->name('newsletter.index');
+    Route::get('/newsletter', 'NewsletterController@export')->name('newsletter.export');
+});
+
+
 
 Route::get('/product-list', 'ProductController@indexFront')->name('product.indexFront');
 Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
@@ -40,6 +49,3 @@ Route::post('/add-to-cart/{id}', 'CartController@addToCart')->name('product.add_
 Route::post('/remove-from-cart/{id}', 'CartController@removeFromCart')->name('product.remove_from_cart');
 Route::get('/cart', 'CartController@currentCart')->name('cart.current_cart');
 
-Route::post('/newsletter', 'NewsletterController@store')->name('newsletter.store');
-Route::get('/newsletters', 'NewsletterController@index')->name('newsletter.index');
-Route::get('/newsletter', 'NewsletterController@export')->name('newsletter.export');

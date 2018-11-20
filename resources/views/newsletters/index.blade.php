@@ -8,7 +8,7 @@
                 <div class="card-header">Newsletter LIST</div>
 
                 <div class="card-body">
-                    <a href="/newsletter" class="btn btn-primary mb-3">Export Newsletter</a>
+                    <a href="{{ route('newsletter.export') }}" class="btn btn-primary mb-3">Export Newsletter</a>
 
                     <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">

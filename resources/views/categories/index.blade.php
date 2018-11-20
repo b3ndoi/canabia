@@ -8,7 +8,7 @@
                 <div class="card-header">Category Create</div>
 
                 <div class="card-body">
-                <a href="/categories/create" class="btn btn-success">Create New Category</a>
+                <a href="{{ route('category.create') }}" class="btn btn-success">Create New Category</a>
 
                     <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
