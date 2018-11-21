@@ -34,12 +34,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/products', 'ProductController@store')->name('product.store');
     Route::get('/products', 'ProductController@index')->name('product.index');
 
-    Route::post('/newsletter', 'NewsletterController@store')->name('newsletter.store');
     Route::get('/newsletters', 'NewsletterController@index')->name('newsletter.index');
     Route::get('/newsletter', 'NewsletterController@export')->name('newsletter.export');
 });
 
 
+Route::post('/newsletter', 'NewsletterController@store')->name('newsletter.store');
+
+Route::get('/contact-us', 'StaticController@contactShow')->name('contact.show');
+Route::post('/contact-us', 'StaticController@contactStore')->name('contact.store');
 
 Route::get('/product-list', 'ProductController@indexFront')->name('product.indexFront');
 Route::get('/product/{slug}', 'ProductController@show')->name('product.show');

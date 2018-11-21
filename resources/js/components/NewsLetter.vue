@@ -10,32 +10,26 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0 col-lg-9">
                     <div class="widget widget_mailchimp">
-                            
-                            <div class="row" v-if="errors.length > 0">
-                                <div class="alert alert-danger" role="alert">
-                                    <ul>
-                                        <li v-for="error in errors" v-bind:key="error">{{error}}</li>
-                                    </ul>
-                                </div>
-                            </div>
                             <div class="row" v-if="subscribed">
                                 <div class="alert alert-success" role="alert">
                                     <strong>Success</strong> Thank you for subscribing!
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" @keydown="submited = false">
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group margin_0"> 
-                                        <input class="form-control mailchimp_fullname" v-model="full_name" required="" type="text" placeholder="Your Full Name*"> 
+                                        <input class="form-control mailchimp_fullname" @keydown="delete errors.full_name" v-model="full_name" required="" type="text" placeholder="Your Full Name*"> 
+                                        <span v-if="errors.full_name" class="text-white">{{errors.full_name[0]}}</span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group margin_0"> 
-                                        <input class="mailchimp_email form-control" v-model="email" required="" type="email" placeholder="Your Email Address*"> 
+                                        <input class="mailchimp_email form-control" @keydown="delete errors.email" v-model="email" required="" type="email" placeholder="Your Email Address*"> 
+                                        <span v-if="errors.email" class="text-white">{{errors.email[0]}}</span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-4"> 
-                                    <button @click="subscribe()" class="theme_button color2 block_button margin_0">
+                                    <button @click="subscribe()" :disabled="submited" class="theme_button color2 block_button margin_0">
                                         Subscribe to newsletter
                                     </button> 
                                 </div>
@@ -57,6 +51,7 @@
                 full_name:'',
                 email:'',
                 errors:[],
+                submited: false,
                 subscribed: false
             }
         },
@@ -65,20 +60,22 @@
         },
         methods:{
             subscribe(){
+                this.submited = true;
                 axios.post('/newsletter',{
                     full_name: this.full_name,
                     email: this.email,
-                }).then((res)=>{
-                    if(res.data == 'success'){
+                })
+                    .then((res)=>{
+                        
                         this.full_name = '';
                         this.email = '';
+                        this.submited = false;
                         this.errors = [];
                         this.subscribedAlert();
-                        return 'success';
-                    }else{
-                        this.errors = Object.values(res.data).flat(2);
-                    }
-                });
+                    })
+                    .catch((errors)=>{
+                        this.errors =  errors.response.data.errors;
+                    });
             },
             subscribedAlert(){
                 this.subscribed = true;

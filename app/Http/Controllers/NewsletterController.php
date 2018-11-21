@@ -18,14 +18,11 @@ class NewsletterController extends Controller
 
     public function store(Request $request){
         
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'email' => 'required|email|unique:newsletters,email',
             'full_name' => 'required'
         ]);
 
-        if ($validator->fails()) {
-            return $validator->errors();
-        }
         $newsletter = new Newsletter;
         $newsletter->email = $request->email;
         $newsletter->full_name = $request->full_name;

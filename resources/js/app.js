@@ -21,6 +21,7 @@ window.Event = new Vue();
 
 Vue.component('newsletter-component', require('./components/NewsLetter.vue'));
 Vue.component('product', require('./components/ProductComponent.vue'));
+Vue.component('contact', require('./components/Contact.vue'));
 Vue.component('side-cart', require('./components/SideCart.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
