@@ -14,6 +14,14 @@ class CartController extends Controller
         return response()->json($cart->getItems());
     }
 
+    public function myCart(){
+
+        $cart = Session::get('cart');
+
+        return view('cart.show', compact('cart'));
+
+    }
+
     public function addToCart(Request $request, $id){
         $product = Product::with('category')->where('id', $id)->first();
         $oldCart = Session::has('cart')? Session::get('cart'):null;

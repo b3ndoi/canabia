@@ -48,7 +48,7 @@
                                             <h2>Recreational &amp; Medical Marijuana...</h2>
                                         </div>
                                         <div class="intro-layer" data-animation="fadeInUp">
-                                            <div class="slide_buttons"> <a href="contact.html" class="theme_button color4 min_width_button">Buy now</a> </div>
+                                            <div class="slide_buttons"> <a href="/product-list" class="theme_button color4 min_width_button">Buy now</a> </div>
                                         </div>
                                     </div>
                                     <!-- eof .slide_description -->

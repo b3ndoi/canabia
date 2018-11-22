@@ -26,13 +26,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexFront()
+    public function indexFront(Request $request)
     {
-        
-        $products = Product::with('category')->latest()->paginate(4);
+        $products = Product::query();
+        $products = $products->with('category')->latest()->paginate(4);
         $categories = Category::all();
         // return $products;
-        return view('products_front.index', compact('products', 'categories'))->withCookie(cookie()->forever('name', 'value'));
+        return view('products_front.index', compact('products', 'categories'));
     }
 
     /**

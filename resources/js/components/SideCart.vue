@@ -32,8 +32,7 @@
                 <span class="price">${{subtotal}}</span> 
             </p>
             <p class="buttons" v-if="products.length > 0">
-                <a href="shop-cart-right.html" class="theme_button color4 min_width_button">View cart</a> 
-                <a href="shop-cart-right.html" class="theme_button color4 inverse">Checkout</a> 
+                <a href="/my-cart" class="theme_button color4 min_width_button">View cart</a> 
             </p>
         </div>
     </div>

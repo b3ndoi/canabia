@@ -48,6 +48,9 @@ Route::get('/product-list', 'ProductController@indexFront')->name('product.index
 Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
 
 
+Route::get('/my-cart', 'CartController@myCart')->name('cart.my_cart');
+
+
 Route::post('/add-to-cart/{id}', 'CartController@addToCart')->name('product.add_to_cart');
 Route::post('/remove-from-cart/{id}', 'CartController@removeFromCart')->name('product.remove_from_cart');
 Route::get('/cart', 'CartController@currentCart')->name('cart.current_cart');
