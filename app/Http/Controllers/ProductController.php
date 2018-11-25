@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Variaton;
 use App\Cart;
 use Session;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class ProductController extends Controller
     public function indexFront(Request $request)
     {
         $products = Product::query();
-        $products = $products->with('category')->latest()->paginate(4);
+        $products = $products->with(['category', 'prices'])->latest()->paginate(4);
         $categories = Category::all();
         // return $products;
         return view('products_front.index', compact('products', 'categories'));
@@ -54,15 +55,34 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
+        
         $product = new Product;
         $product->name = $request->name;
         $product->slug = $product->generateSlug($request->name);
         $product->description = $request->description;
-        $product->price = $request->price;
+        $product->price = $request->price[0];
+        $product->amount = $request->amount[0];
+        $product->unit = $request->unit;
         $path = $request->file('image')->store('public/products');
         $product->category_id = $request->category_id;
         $product->image = $path;
         $product->save();
+
+        $vaiations = [];
+        for ($i=0; $i < count($request->price); $i++) {
+            array_push($vaiations, [
+                'price' => $request->price[$i],
+                'amount' => $request->amount[$i],
+            ]);
+        }
+        foreach($vaiations as $vaiation){
+            $var = new Variaton;
+            $var->product_id = $product->id;
+            $var->price =$vaiation['price'];
+            $var->amount = $vaiation['amount'];
+            $var->save();
+        }
         return back();
     }
 
@@ -75,6 +95,7 @@ class ProductController extends Controller
     public function show($slug)
     {
         $product = Product::with('category')->where('slug', $slug)->first();
+        // return $product->prices;
         $related_products = $product->category->products()->with('category')->where('id', '!=', $product->id)->latest()->get();
         return view('products_front.show', compact('product', 'related_products'));
     }

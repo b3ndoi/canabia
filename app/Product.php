@@ -18,6 +18,9 @@ class Product extends Model
         return $image;
     }
 
+    public function prices(){
+        return $this->hasMany('App\Variaton', 'product_id');
+    }
     /**
      * Get the user's full name.
      *

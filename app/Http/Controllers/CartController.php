@@ -10,8 +10,8 @@ class CartController extends Controller
 {
     public function currentCart(){
         $cart = Session::get('cart');
-
-        return response()->json($cart->getItems());
+        
+        return response()->json($cart?$cart->getItems():[]);
     }
 
     public function myCart(){

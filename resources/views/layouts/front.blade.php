@@ -91,12 +91,8 @@
 					<div class="row">
 						<div class="col-sm-12 display_table">
 							<div class="header_left_logo display_table_cell"> 
-								<a href="/" class="logo logo_with_text">
+								<a href="/" class="logo">
 									<img src="/images/logo.png" alt="">
-									<span class="logo_text">
-										Canabia
-										<small>Colorado dispensary</small>
-									</span>
                     			</a> 
 							</div>
 							<div class="header_mainmenu display_table_cell text-right">

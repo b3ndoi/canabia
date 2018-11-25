@@ -74,6 +74,11 @@
                                     <a class="social-icon socicon-youtube" href="#" title="Youtube"></a> 
                                 </div>
                             </div> -->
+                            <select name="" id="">
+                                @foreach($product->prices as $price)
+                                <option value="">{{$price->amount}}</option>
+                                @endforeach
+                            </select>
                             <div class="inline-content"> <span class="quantity form-group">
                         <input type="button" value="+" class="plus">
                         <i class="fa fa-angle-up" aria-hidden="true"></i>

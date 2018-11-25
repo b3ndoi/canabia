@@ -20,11 +20,15 @@
                             <input type='text' class='form-control' id='name' name='name' placeholder='Name'>
                         </div>
                         <div class='form-group'>
-                            <label for='price'>Price</label>
-                            <input type='text' class='form-control' id='price' name='price' placeholder='Price'>
+                            <label for='unit'>Unit</label>
+                            <select name="unit"  class='form-control' id="unit">
+                                <option value="g">g</option>
+                                <option value="g">ml</option>
+                            </select>
                         </div>
+                        <price-component></price-component>
                         <div class='form-group'>
-                            <label for='category_id'>Category:</label>
+                            <label for='category_id'>Category</label>
                             <select name="category_id"  class='form-control' id="category_id">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>

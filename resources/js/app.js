@@ -22,6 +22,7 @@ window.Event = new Vue();
 Vue.component('newsletter-component', require('./components/NewsLetter.vue'));
 Vue.component('product', require('./components/ProductComponent.vue'));
 Vue.component('contact', require('./components/Contact.vue'));
+Vue.component('price-component', require('./components/PriceComponent.vue'));
 Vue.component('side-cart', require('./components/SideCart.vue'));
 Vue.component('cart', require('./components/CartComponent.vue'));
 
