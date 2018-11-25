@@ -13,6 +13,7 @@
                         </a> 
                     </li>
                     <li> <a href="/product-list">Products</a> </li>
+                    <li> <a href="/product-list?category_id={{$product->category->id}}">{{$product->category->name}}</a> </li>
                     <li class="active">{{$product->name}}</li>
                 </ol>
             </div>

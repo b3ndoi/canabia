@@ -12,7 +12,18 @@
                             Home
                         </a> 
                     </li>
+                    @if(request()->has('category_id') && request('category_id'))
+                        <li >
+                            <a href="/product-list">
+                            Products
+                            </a>     
+                        </li>
+                        <li class="active">
+                           {{$category->name}}
+                        </li>
+                    @else
                     <li class="active">Products</li>
+                    @endif
                 </ol>
             </div>
         </div>
@@ -97,7 +108,7 @@
                         <div class="price_label" style=""> Price: <span class="price_from">2</span> - <span class="price_to">35</span> </div>
                         <div class="topmargin_20" style="display:flex">
                              <button type="submit" class="theme_button color4 min_width_button">Filter</button> 
-                             @if(request()->has('price_from')&&request()->has('price_to'))
+                             @if(request()->has('price_from')&&request()->has('price_to') || request()->has('category_id'))
                                 <a href="/product-list" type="submit" class="theme_button color4 min_width_button">Rest</a> 
                              @endif
                         </div>

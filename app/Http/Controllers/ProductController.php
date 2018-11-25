@@ -31,6 +31,7 @@ class ProductController extends Controller
     {
         $products = Product::query();
         $query = [];
+        $category = null;
         if($request->has('price_from')&&$request->has('price_to')){
             $products = $products->whereBetween('price', [$request->price_from, $request->price_to]);
             $query['price_from'] = $request->price_from;
@@ -38,6 +39,7 @@ class ProductController extends Controller
         }
         if($request->has('category_id') && $request->category_id){
             $products = $products->where('category_id', $request->category_id);
+            $category = Category::find($request->category_id);
             $query['category_id'] = $request->category_id;
         }
         if($request->has('search') && $request->search){
@@ -47,7 +49,7 @@ class ProductController extends Controller
         $products = $products->with(['category', 'prices'])->latest()->paginate(4)->appends($query);
         $categories = Category::all();
         // return $products;
-        return view('products_front.index', compact('products', 'categories'));
+        return view('products_front.index', compact('products', 'categories', 'category'));
     }
 
     /**
