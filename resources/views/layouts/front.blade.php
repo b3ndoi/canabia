@@ -103,7 +103,7 @@
 											<a href="/">Home</a>
 										</li>
 										<li class="{{ Request::is('product-list') ? 'active' : '' }}"> 
-											<a href="/product-list">Shop <span class="label label-success">4</span></a>
+											<a href="/product-list">Shop </a>
 										</li>
 										<li class="{{ Request::is('contact-us') ? 'active' : '' }}"> 
 											<a href="/contact-us">Contact us</a>

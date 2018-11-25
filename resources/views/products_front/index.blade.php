@@ -8,15 +8,6 @@
                 <div class="shop-sorting">
                     <form class="form-inline content-justify vertical-center content-margins">
                         <div>Showing {{$products->firstItem()}}-{{$products->lastItem()}} of {{$products->total()}} results </div>
-                        <div class="form-group select-group"> 
-                            <select aria-required="true" id="date" name="date" class="choice empty form-control">
-                                <option value="" disabled selected data-default>Default Sorting</option>
-                                <option value="value">by Value</option>
-                                <option value="date">by Date</option>
-                                <option value="popular">by Popularity</option>
-                            </select> 
-                            <i class="fa fa-angle-down theme_button color1 no_bg_button" aria-hidden="true"></i> 
-                        </div>
                     </form>
                 </div>
                 <div class="columns-2">
@@ -43,7 +34,7 @@
                     
                         <div class="form-group margin_0"> 
                             <label class="sr-only" for="widget-search">Search for:</label> 
-                            <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Type keyword here..."> 
+                            <input id="widget-search" type="text" value="{{request('search')}}" name="search" class="form-control" placeholder="Type keyword here..."> 
                         </div> 
                         <!-- <button type="submit" class="theme_button color4 no_bg_button">Search</button>									 -->
                     
@@ -53,7 +44,7 @@
                     <select name="category_id" class="wrap-select-group">
                         <option value="">All</option>
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}" {{request('category_id')==$category->id?'selected':''}}>{{$category->name}}</option>
                         @endforeach
                     </select> </div>
                 <!-- <div class="widget widget_categories">
@@ -73,13 +64,18 @@
             <option value="5">Effect 4</option>
         </select> </div> -->
                 <div class="widget widget_price_filter">
-                    <h3 class="widget-title">Filter by Price</h3>
+                    <h3 class="widget-title">Filter by Price {{request('price_from')}}</h3>
                     <!-- price slider -->
                         <div class="slider-range-price"></div>
                         <input type="hidden" name="price_from" id="price_from">
                         <input type="hidden" name="price_to" id="price_from">
                         <div class="price_label" style=""> Price: <span class="price_from">2</span> - <span class="price_to">35</span> </div>
-                        <div class="topmargin_20"> <button type="submit" class="theme_button color4 min_width_button">Filter</button> </div>
+                        <div class="topmargin_20" style="display:flex">
+                             <button type="submit" class="theme_button color4 min_width_button">Filter</button> 
+                             @if(request()->has('price_from')&&request()->has('price_to'))
+                             <a href="/product-list" type="submit" class="theme_button color4 min_width_button">Rest</a> 
+                             @endif
+                        </div>
                     </div>
                 </form>
                 <side-cart></side-cart>
@@ -103,7 +99,7 @@ if (jQuery().slider) {
             range: true,
             min: 0,
             max: 200,
-            values: [ {{request('price_from')?request('price_from'):30}}, {{request('price_to')?request('price_to'):100}} ],
+            values: [ {{request('price_from')!=null?request('price_from'):30}}, {{request('price_to')!=null?request('price_to'):100}} ],
             slide: function( event, ui ) {
                 $priceMin.html( '$' + ui.values[ 0 ] );
                 $('[name=price_from]').val(ui.values[ 0 ]);
@@ -111,8 +107,8 @@ if (jQuery().slider) {
                 $priceMax.html( '$' + ui.values[ 1 ] );
             }
         });
-        $('[name=price_from]').val({{request('price_from')?request('price_from'):30}});
-        $('[name=price_to]').val({{request('price_to')?request('price_to'):100}});
+        $('[name=price_from]').val({{request('price_from')!=null?request('price_from'):30}});
+        $('[name=price_to]').val({{request('price_to')!=null?request('price_to'):100}});
         $priceMin.html('$' + $rangeSlider.slider("values", 0));
         $priceMax.html('$' + $rangeSlider.slider("values", 1));
     }

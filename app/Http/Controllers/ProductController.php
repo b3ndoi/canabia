@@ -30,7 +30,21 @@ class ProductController extends Controller
     public function indexFront(Request $request)
     {
         $products = Product::query();
-        $products = $products->with(['category', 'prices'])->latest()->paginate(4);
+        $query = [];
+        if($request->has('price_from')&&$request->has('price_to')){
+            $products = $products->whereBetween('price', [$request->price_from, $request->price_to]);
+            $query['price_from'] = $request->price_from;
+            $query['price_to'] = $request->price_to;
+        }
+        if($request->has('category_id') && $request->category_id){
+            $products = $products->where('category_id', $request->category_id);
+            $query['category_id'] = $request->category_id;
+        }
+        if($request->has('search') && $request->search){
+            $products = $products->where('name', 'LIKE', '%'.$request->search.'%');
+            $query['search'] = $request->search;
+        }
+        $products = $products->with(['category', 'prices'])->latest()->paginate(4)->appends($query);
         $categories = Category::all();
         // return $products;
         return view('products_front.index', compact('products', 'categories'));
