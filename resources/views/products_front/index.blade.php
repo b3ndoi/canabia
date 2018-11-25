@@ -11,6 +11,7 @@
                     </form>
                 </div>
                 <div class="columns-2">
+                    @if(count($products)>0)
                     <ul id="products" class="products list-unstyled">
                         @foreach($products as $product)
                             <li class="product type-product loop-color">
@@ -19,6 +20,13 @@
                             </li>
                         @endforeach
                     </ul>
+                    @endif
+                    @if(request()->has('price_from')&&request()->has('price_to') && count($products)==0)
+                        <p>No search results.</p>
+                    @endif
+                    @if(!request()->has('price_from')&&!request()->has('price_to') && count($products)==0)
+                        <p>No products.</p>
+                    @endif
                 </div>
                 <!-- eof .columns-* -->
                 <div class="row">
