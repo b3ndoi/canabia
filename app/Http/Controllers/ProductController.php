@@ -95,8 +95,9 @@ class ProductController extends Controller
     public function show($slug)
     {
         $product = Product::with('category')->where('slug', $slug)->first();
-        // return $product->prices;
-        $related_products = $product->category->products()->with('category')->where('id', '!=', $product->id)->latest()->get();
+        $rel_price_low = $product->price - $product->price*.2;
+        $rel_price_heigh = $product->price + $product->price*.2;
+        $related_products = $product->category->products()->with('category')->where('id', '!=', $product->id)->whereBetween('price', [$rel_price_low, $rel_price_heigh])->latest()->get();
         return view('products_front.show', compact('product', 'related_products'));
     }
 

@@ -47746,6 +47746,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['productjson', 'isrelated'],
@@ -47766,6 +47771,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 window.Event.$emit('addedToCart', _this.product);
             });
+        },
+        setPrice: function setPrice(price) {
+            this.product.price = price.price;
+            this.product.amount = price.amount;
         }
     }
 });
@@ -48581,6 +48590,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //

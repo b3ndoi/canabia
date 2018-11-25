@@ -125,10 +125,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-3 col-md-12 text-center">
-							<div class="logo vertical_logo topmargin_20"> <img src="/images/logo.png" alt=""> <span class="logo_text">
-                        Canabia
-                        <small>Colorado dispensary</small>
-                    </span> </div>
+							<div class="logo vertical_logo topmargin_20"> <img src="/images/logo_white.png" alt=""> </div>
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 text-center text-sm-left">
 							<div class="widget widget_text greylinks color2">

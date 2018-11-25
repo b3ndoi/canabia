@@ -17,6 +17,11 @@
             </div>
         </div>
         <div class="item-content">
+            <!-- <ul class="nav-unstyled darklinks">
+                <li v-for="price in product.prices" :key="price.id" :class="price.price == product.price?'active':''">
+                    <a @click="setPrice(price)">{{price.amount+product.unit}}</a>
+                </li>
+            </ul> -->
             <div > 
                 <b style="width:100%">
                     {{product.category.name}}
@@ -49,6 +54,10 @@
                     
                 })
                 
+            },
+            setPrice(price){
+                this.product.price = price.price;
+                this.product.amount = price.amount;
             }
         }
     }

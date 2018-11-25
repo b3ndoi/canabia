@@ -22,6 +22,7 @@
                         </span> 
                         <span class="product-quantity">
                             <span>{{product.count}} x</span> 
+                            <!-- <span>{{product.amount+product.unit}} x</span>  -->
                             <span class="price">${{product.price}}</span> 
                         </span>
                     </div>
