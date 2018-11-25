@@ -1,6 +1,23 @@
 @extends('layouts.front')
 
 @section('content')
+<section class="page_breadcrumbs ds parallax section_padding_top_40 section_padding_bottom_40">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>Products</h2>
+                <ol class="breadcrumb greylinks color4">
+                    <li> 
+                        <a href="/">
+                            Home
+                        </a> 
+                    </li>
+                    <li class="active">Products</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="ls section_padding_top_150 section_padding_bottom_100 columns_padding_30">
     <div class="container">
         <div class="row">
@@ -81,7 +98,7 @@
                         <div class="topmargin_20" style="display:flex">
                              <button type="submit" class="theme_button color4 min_width_button">Filter</button> 
                              @if(request()->has('price_from')&&request()->has('price_to'))
-                             <a href="/product-list" type="submit" class="theme_button color4 min_width_button">Rest</a> 
+                                <a href="/product-list" type="submit" class="theme_button color4 min_width_button">Rest</a> 
                              @endif
                         </div>
                     </div>

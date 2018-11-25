@@ -1,6 +1,24 @@
 @extends('layouts.front')
 
 @section('content')
+<section class="page_breadcrumbs ds parallax section_padding_top_40 section_padding_bottom_40">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>{{$product->name}}</h2>
+                <ol class="breadcrumb greylinks color4">
+                    <li> 
+                        <a href="/">
+                            Home
+                        </a> 
+                    </li>
+                    <li> <a href="/product-list">Products</a> </li>
+                    <li class="active">{{$product->name}}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="ls section_padding_top_150 section_padding_bottom_130 columns_padding_25">
     <div class="container">
         <div class="row">
@@ -47,18 +65,7 @@
                                 </ul>
                             </div> -->
                         </div>
-                        <div class="row product_meta small-text greylinks columns_padding_0">
-                            <div class="col-sm-6"> <span class="posted_in">
-                        <span>Categories:</span> <span class="categories-links">
-                            <a rel="category" href="shop-right.html">cannabis</a>, <a rel="category" href="shop-right.html">flowers</a>
-                        </span> </span>
-                            </div>
-                            <div class="col-sm-6"> <span class="posted_in">
-                        <span>Tags:</span> <span class="categories-links">
-                            <a rel="category" href="shop-right.html">flowers</a>
-                        </span> </span>
-                            </div>
-                        </div>
+                        
                         <form class="cart topmargin_50" method="post" enctype="multipart/form-data">
                             <!-- <div class="row">
                                 <div class="col-sm-6 greylinks"> <a href="#0" class="small-text bold">
@@ -74,20 +81,26 @@
                                     <a class="social-icon socicon-youtube" href="#" title="Youtube"></a> 
                                 </div>
                             </div> -->
-                            <select name="" id="">
-                                @foreach($product->prices as $price)
-                                <option value="">{{$price->amount}}</option>
-                                @endforeach
-                            </select>
-                            <div class="inline-content"> <span class="quantity form-group">
-                        <input type="button" value="+" class="plus">
-                        <i class="fa fa-angle-up" aria-hidden="true"></i>
-                        <input type="number" step="1" min="0" name="product_quantity" value="1" title="Qty" id="product_quantity" class="form-control ">
-                        <input type="button" value="-" class="minus">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span> <a href="#" rel="nofollow" class="theme_button color4 min_width_button add_to_cart_button">
-                        Add to cart
-                    </a> </div>
+                            <div style="display:flex">
+                                <select name="" id="" style="margin-right: 16px;">
+                                    @foreach($product->prices as $price)
+                                        <option value="{{$price->id}}">{{$price->amount}} {{$product->unit}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="inline-content"> 
+                                    <span class="quantity form-group">
+                                        <input type="button" value="+" class="plus">
+                                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                        <input type="number" step="1" min="0" name="product_quantity" value="1" title="Qty" id="product_quantity" class="form-control ">
+                                        <input type="button" value="-" class="minus">
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </span> 
+                                    <a href="#" rel="nofollow" class="theme_button color4 min_width_button add_to_cart_button">
+                                        Add to cart
+                                    </a> 
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                     <!-- .summary.col- -->

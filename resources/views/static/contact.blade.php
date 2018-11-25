@@ -1,6 +1,23 @@
 @extends('layouts.front')
 
 @section('content')
+<section class="page_breadcrumbs ds parallax section_padding_top_40 section_padding_bottom_40">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>Contact us</h2>
+                <ol class="breadcrumb greylinks color4">
+                    <li> 
+                        <a href="/">
+                            Home
+                        </a> 
+                    </li>
+                    <li class="active">Contact us</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="ls columns_padding_25 section_padding_top_65 section_padding_bottom_130">
     <div class="container">
         <div class="row">
