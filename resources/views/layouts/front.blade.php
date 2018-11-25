@@ -9,7 +9,7 @@
 
 <!-- Mirrored from webdesign-finder.com/html/canabia/shop-left.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Nov 2018 18:21:34 GMT -->
 <head>
-	<title>Canabia</title>
+	<title>Charie's Cannabis</title>
 	<meta charset="utf-8">
 	<!--[if IE]>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">

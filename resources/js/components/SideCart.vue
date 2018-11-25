@@ -80,7 +80,7 @@
                         }
                     })
                     this.subtotal = this.subtotal - parseFloat(product.price)*parseFloat(product.count);
-                    
+                    this.$toasted.show('Removed: '+ product.name +' from cart.').goAway(1500);
                 })
                 
                 console.log(this.products);

@@ -51,7 +51,7 @@
                 axios.post('/add-to-cart/'+this.product.id).then((res)=>{
                     
                     window.Event.$emit('addedToCart', this.product)
-                    
+                    this.$toasted.show('Added: '+ this.product.name +' to cart.').goAway(1500);
                 })
                 
             },
