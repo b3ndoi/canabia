@@ -105,8 +105,13 @@
 										<li class="{{ Request::is('product-list') ? 'active' : '' }}"> 
 											<a href="/product-list">Shop </a>
 										</li>
+										<li class="{{ Request::is('my-cart') ? 'active' : '' }}"> 
+											<a href="/my-cart">My Cart 
+												<!-- <my-cart-count></my-cart-count> -->
+											</a>
+										</li>
 										<li class="{{ Request::is('contact-us') ? 'active' : '' }}"> 
-											<a href="/contact-us">Contact us</a>
+											<a href="/contact-us">Contact us </a>
 										</li>
 										<!-- eof contacts -->
 									</ul>
@@ -175,7 +180,7 @@
 	<script src="/js/app.js"></script>
 	<script src="/js/compressed.js"></script>
 	<script src="/js/main.js"></script>
-	<script src="/js/switcher.js"></script>
+	<!-- <script src="/js/switcher.js"></script> -->
 	@yield('scripts')
 </body>
 

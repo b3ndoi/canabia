@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Category Create</div>
                 
@@ -26,7 +26,7 @@
                                 <option value="g">ml</option>
                             </select>
                         </div>
-                        <price-component></price-component>
+                        <price-component prices=""></price-component>
                         <div class='form-group'>
                             <label for='category_id'>Category</label>
                             <select name="category_id"  class='form-control' id="category_id">

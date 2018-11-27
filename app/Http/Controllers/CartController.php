@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Variaton;
 use App\Cart;
 use Session;
 class CartController extends Controller
@@ -22,12 +23,13 @@ class CartController extends Controller
 
     }
 
-    public function addToCart(Request $request, $id){
+    public function addToCart(Request $request, $id, $var_id){
         $product = Product::with('category')->where('id', $id)->first();
+        $variation = Variaton::find($var_id);
         $oldCart = Session::has('cart')? Session::get('cart'):null;
         
         $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
+        $cart->add($product, $variation);
         
         $request->session()->put('cart', $cart );
 
@@ -35,12 +37,13 @@ class CartController extends Controller
 
         return $cart->items;
     }
-    public function removeFromCart(Request $request, $id){
+    public function removeFromCart(Request $request, $id, $var_id){
         $product = Product::with('category')->where('id', $id)->first();
+        $variation = Variaton::find($var_id);
         $oldCart = Session::has('cart')? Session::get('cart'):null;
         
         $cart = new Cart($oldCart);
-        $cart->remove($product, $product->id);
+        $cart->remove($product, $variation);
         
         $request->session()->put('cart', $cart );
 

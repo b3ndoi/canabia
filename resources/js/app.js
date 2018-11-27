@@ -26,7 +26,9 @@ Vue.use(Toasted)
  */
 
 Vue.component('newsletter-component', require('./components/NewsLetter.vue'));
+Vue.component('my-cart-count', require('./components/MenuCart.vue'));
 Vue.component('product', require('./components/ProductComponent.vue'));
+Vue.component('single-product', require('./components/SingleProduct.vue'));
 Vue.component('contact', require('./components/Contact.vue'));
 Vue.component('price-component', require('./components/PriceComponent.vue'));
 Vue.component('side-cart', require('./components/SideCart.vue'));

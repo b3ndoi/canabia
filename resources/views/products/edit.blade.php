@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Category Create</div>
 
@@ -21,9 +21,13 @@
                             <input type='text' class='form-control' value="{{old('name')?:$product->name}}" id='name' name='name' placeholder='Name'>
                         </div>
                         <div class='form-group'>
-                            <label for='price'>Price</label>
-                            <input type='text' class='form-control' id='price' value="{{old('price')?:$product->price}}" name='price' placeholder='Price'>
+                            <label for='unit'>Unit</label>
+                            <select name="unit"  class='form-control' id="unit">
+                                <option value="g">g</option>
+                                <option value="g">ml</option>
+                            </select>
                         </div>
+                        <price-component prices="{{$product->prices}}"></price-component>
                         <div class='form-group'>
                             <label for='category_id'>Category</label>
                             <select name="category_id"  class='form-control' id="category_id">

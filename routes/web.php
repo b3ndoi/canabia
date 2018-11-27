@@ -51,7 +51,22 @@ Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
 Route::get('/my-cart', 'CartController@myCart')->name('cart.my_cart');
 
 
-Route::post('/add-to-cart/{id}', 'CartController@addToCart')->name('product.add_to_cart');
-Route::post('/remove-from-cart/{id}', 'CartController@removeFromCart')->name('product.remove_from_cart');
+Route::get('/test', function(){
+    $products = App\Product::doesntHave('prices')->get();
+    foreach($products as $product){
+        $product->amount = 1;
+        $product->unit = 'g';
+        $product->save();
+        $variation = new App\Variaton;
+        $variation->product_id = $product->id;
+        $variation->price = $product->price;
+        $variation->amount = $product->amount;
+        $variation->save();
+    }
+    return $products;
+});
+
+Route::post('/add-to-cart/{id}/{var_id}', 'CartController@addToCart')->name('product.add_to_cart');
+Route::post('/remove-from-cart/{id}/{var_id}', 'CartController@removeFromCart')->name('product.remove_from_cart');
 Route::get('/cart', 'CartController@currentCart')->name('cart.current_cart');
 

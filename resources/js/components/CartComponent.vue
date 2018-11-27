@@ -8,6 +8,7 @@
                     <thead>
                         <tr>
                             <td class="product-info">Product</td>
+                            <td class="product-price-td">Variation</td>
                             <td class="product-price-td">Price</td>
                             <td class="product-quantity">Quantity</td>
                             <td class="product-subtotal">Subtotal</td>
@@ -32,7 +33,11 @@
                                 </div>
                             </td>
                             <td class="product-price"> 
-                                <span class="currencies">$</span><span class="amount">{{product.price}}</span> </td>
+                                {{product.amount}}{{product.unit}}
+                            </td>
+                            <td class="product-price"> 
+                                <span class="currencies">$</span><span class="amount">{{product.price}}</span> 
+                            </td>
                             <td class="product-quantity">
                                 <div class="quantity"> 
                                     <input type="button"  @click="configurePrice(product, '-')" value="-" class="minus"> 
@@ -105,10 +110,10 @@
         },
         methods:{
             removeFromCart(product){
-                axios.post('/remove-from-cart/'+product.id).then((res)=>{
-                    
+                axios.post('/remove-from-cart/'+product.id+'/'+product.variation_id).then((res)=>{
+                    window.Event.$emit('removedFromCart', product)
                     this.products = this.products.filter(function(item){
-                        if(product.id != item.id){
+                        if(product.variation_id != item.variation_id){
                             return item
                         }
                     })
@@ -136,10 +141,10 @@
                     return false;
                 }
                 var found = this.products.find(function(element) {
-                    return element.id == payload.id;
+                    return element.variation_id == payload.variation_id;
                 });
                 this.products = this.products.map(function(element){
-                    if(element.id == payload.id){
+                    if(element.variation_id == payload.variation_id){
                         console.log(this);
                         if(increment=='+'){
                             

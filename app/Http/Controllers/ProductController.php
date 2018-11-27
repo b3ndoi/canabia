@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with(['category', 'prices'])->latest()->get();
         return view('products.index', compact('products'));
     }
     /**
@@ -110,10 +110,10 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::with('category')->where('slug', $slug)->first();
+        $product = Product::with(['category', 'prices'])->where('slug', $slug)->first();
         $rel_price_low = $product->price - $product->price*.2;
         $rel_price_heigh = $product->price + $product->price*.2;
-        $related_products = $product->category->products()->with('category')->where('id', '!=', $product->id)->whereBetween('price', [$rel_price_low, $rel_price_heigh])->latest()->get();
+        $related_products = $product->category->products()->with(['category', 'prices'])->where('id', '!=', $product->id)->whereBetween('price', [$rel_price_low, $rel_price_heigh])->latest()->get();
         return view('products_front.show', compact('product', 'related_products'));
     }
 
@@ -127,7 +127,7 @@ class ProductController extends Controller
     {
 
         $categories = Category::all();
-        $product = Product::with('category')->where('slug', $slug)->first();
+        $product = Product::with(['category', 'prices'])->where('slug', $slug)->first();
         return view('products.edit', compact('categories', 'product'));
 
     }
@@ -152,12 +152,28 @@ class ProductController extends Controller
         }
 
         $product->name = $request->name;
+        $product->unit = $request->unit;
+        $product->amount = $request->amount[0];
         $product->slug = $product->generateSlug($request->name);
         $product->description = $request->description;
-        $product->price = $request->price;
+        $product->price = $request->price[0];
         $product->category_id = $request->category_id;
         $product->save();
-
+        
+        // $vaiations = [];
+        // for ($i=0; $i < count($request->price); $i++) {
+        //     array_push($vaiations, [
+        //         'price' => $request->price[$i],
+        //         'amount' => $request->amount[$i],
+        //     ]);
+        // }
+        // foreach($vaiations as $vaiation){
+        //     // $var = $product->prices()->where('price', $vaiation['price']);
+        //     $var->product_id = $product->id;
+        //     $var->price =$vaiation['price'];
+        //     $var->amount = $vaiation['amount'];
+        //     $var->save();
+        // }
         return back();
     }
 

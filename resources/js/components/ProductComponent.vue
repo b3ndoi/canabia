@@ -45,13 +45,14 @@
         },
         created() {
             this.product = JSON.parse(this.productjson);
+            this.product.variation_id = this.product.prices[0].id
         },
         methods:{
             addToCart(){
-                axios.post('/add-to-cart/'+this.product.id).then((res)=>{
+                axios.post('/add-to-cart/'+this.product.id+'/'+this.product.variation_id).then((res)=>{
                     
                     window.Event.$emit('addedToCart', this.product)
-                    this.$toasted.show('Added: '+ this.product.name +' to cart.').goAway(1500);
+                    this.$toasted.show('Added: '+ this.product.name +' ('+ this.product.amount+ this.product.unit+')'+' to cart.').goAway(1500);
                 })
                 
             },

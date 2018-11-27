@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Products</div>
 
@@ -20,7 +20,7 @@
                             <tr>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Price ($)</th>
+                                <th>Amount/Price ($)</th>
                                 <th>Category</th>
                                 <th></th>
                             </tr>
@@ -32,7 +32,11 @@
                                         <img src="{{$product->image}}" alt="" width="150px" class="img-fluid">
                                     </td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->price}}</td>
+                                    <td>
+                                        @foreach($product->prices as $price)
+                                        {{$price->amount}}{{$product->unit}}/{{$price->price}}<br>
+                                        @endforeach
+                                    </td>
                                     <td>{{$product->category->name}}</td>
                                     <td>
                                         <a href="products/{{$product->slug}}/edit" class="btn btn-primary">Edit</a>
