@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    $products = App\Product::with('category')->latest()->limit(9)->get();
+    $products = App\Product::with(['category', 'prices'])->latest()->limit(9)->get();
     return view('static.homepage', compact('products'));
 });
 
