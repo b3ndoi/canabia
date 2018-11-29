@@ -44,27 +44,13 @@ Route::post('/newsletter', 'NewsletterController@store')->name('newsletter.store
 Route::get('/contact-us', 'StaticController@contactShow')->name('contact.show');
 Route::post('/contact-us', 'StaticController@contactStore')->name('contact.store');
 
+Route::get('/about-us', 'StaticController@aboutShow')->name('about.show');
+
 Route::get('/product-list', 'ProductController@indexFront')->name('product.indexFront');
 Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
 
 
 Route::get('/my-cart', 'CartController@myCart')->name('cart.my_cart');
-
-
-Route::get('/test', function(){
-    $products = App\Product::doesntHave('prices')->get();
-    foreach($products as $product){
-        $product->amount = 1;
-        $product->unit = 'g';
-        $product->save();
-        $variation = new App\Variaton;
-        $variation->product_id = $product->id;
-        $variation->price = $product->price;
-        $variation->amount = $product->amount;
-        $variation->save();
-    }
-    return $products;
-});
 
 Route::post('/add-to-cart/{id}/{var_id}', 'CartController@addToCart')->name('product.add_to_cart');
 Route::post('/remove-from-cart/{id}/{var_id}', 'CartController@removeFromCart')->name('product.remove_from_cart');

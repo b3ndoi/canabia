@@ -73,16 +73,18 @@
 						<div class="col-sm-8 col-lg-9 text-center text-sm-left">
 							<div class="inline-content big-spacing"> <span>
 						<i class="fa fa-map-marker highlight2 rightpadding_5" aria-hidden="true"></i>
-						123 Abshire Circle, Colorado
+						Basel, Switzerland
 					</span> <span class="greylinks">
 						<i class="fa fa-pencil highlight2 rightpadding_5" aria-hidden="true"></i>
-						<a href="mailto:marijuana@example.com">marijuana@example.com</a>
-					</span> <span>
+						<a href="mailto:info@charliescannabis.com">info@charliescannabis.com</a>
+					</span> 
+					<!-- <span>
 						<i class="fa fa-clock-o highlight2 rightpadding_5" aria-hidden="true"></i>
 						Working Hours: 24/7
-					</span> </div>
+					</span>  -->
+					</div>
 						</div>
-						<div class="col-sm-4 col-lg-3 text-center text-sm-right"> <a href="contacts.html" class="theme_button color3 block_button margin_0">Request a call back free</a> </div>
+						<div class="col-sm-4 col-lg-3 text-center text-sm-right"> <a href="phone:+41793223520" class="theme_button color3 block_button margin_0">Request a call back free</a> </div>
 					</div>
 				</div>
 			</section>
@@ -113,6 +115,9 @@
 										<li class="{{ Request::is('contact-us') ? 'active' : '' }}"> 
 											<a href="/contact-us">Contact us </a>
 										</li>
+										<li class="{{ Request::is('about-us') ? 'active' : '' }}"> 
+											<a href="/about-us">About us </a>
+										</li>
 										<!-- eof contacts -->
 									</ul>
 								</nav>
@@ -137,23 +142,15 @@
 								<h4 class="widget-title"> Our Contacts </h4>
 								<div class="media small-media">
 									<div class="media-left"> <i class="fa fa-map-marker highlight2"></i> </div>
-									<div class="media-body">123 Abshire Circle, Colorado</div>
+									<div class="media-body">Basel, Switzerland</div>
 								</div>
 								<div class="media small-media">
 									<div class="media-left"> <i class="fa fa-pencil highlight2"></i> </div>
-									<div class="media-body"> <a href="mailto:marijuana@example.com">marijuana@example.com</a> </div>
-								</div>
-								<div class="media small-media">
-									<div class="media-left"> <i class="fa fa-internet-explorer highlight2"></i> </div>
-									<div class="media-body"> <a href="#">www.example.com</a> </div>
+									<div class="media-body"> <a href="mailto:info@charliescannabis.com">info@charliescannabis.com</a> </div>
 								</div>
 								<div class="media small-media">
 									<div class="media-left"> <i class="fa fa-phone highlight2"></i> </div>
-									<div class="media-body">0 (800) 846 4235 (operator) </div>
-								</div>
-								<div class="media small-media">
-									<div class="media-left"> <i class="fa fa-clock-o highlight2"></i> </div>
-									<div class="media-body">Working Hours: 24/7</div>
+									<div class="media-body">+41 (0)79 322 35 20</div>
 								</div>
 							</div>
 						</div>

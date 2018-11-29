@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Mail;
 
 class StaticController extends Controller
 {
+    public function aboutShow(){
+        return view('static.about');
+    }
+
     public function contactShow(){
         return view('static.contact');
     }

@@ -30,24 +30,24 @@
                 <h3>Contact Info</h3>
                 <div class="media small-media">
                     <div class="media-left"> <i class="fa fa-map-marker highlight2"></i> </div>
-                    <div class="media-body">123 Abshire Circle, Colorado</div>
+                    <div class="media-body">Basel, Switzerland</div>
                 </div>
                 <div class="media small-media greylinks">
                     <div class="media-left"> <i class="fa fa-pencil highlight2"></i> </div>
-                    <div class="media-body"> <a href="mailto:marijuana@example.com">marijuana@example.com</a> </div>
+                    <div class="media-body"> <a href="mailto:info@charliescannabis.com">info@charliescannabis.com</a> </div>
                 </div>
-                <div class="media small-media greylinks">
+                <!-- <div class="media small-media greylinks">
                     <div class="media-left"> <i class="fa fa-internet-explorer highlight2"></i> </div>
                     <div class="media-body"> <a href="#">www.example.com</a> </div>
-                </div>
+                </div> -->
                 <div class="media small-media">
                     <div class="media-left"> <i class="fa fa-phone highlight2"></i> </div>
-                    <div class="media-body">0 (800) 846 4235 (operator) </div>
+                    <div class="media-body">+41 (0)79 322 35 20</div>
                 </div>
-                <div class="media small-media">
+                <!-- <div class="media small-media">
                     <div class="media-left"> <i class="fa fa-clock-o highlight2"></i> </div>
                     <div class="media-body">Working Hours: 24/7</div>
-                </div>
+                </div> -->
             </div>
             <!--.col-* -->
         </div>
