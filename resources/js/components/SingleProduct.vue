@@ -66,11 +66,11 @@
                     </select>
                     <div class="inline-content"> 
                         <span class="quantity form-group">
-                            <input type="button" value="+" class="plus">
-                            <i class="fa fa-angle-up" aria-hidden="true"></i>
-                            <input type="number" step="1" min="0" name="product_quantity" value="1" title="Qty" id="product_quantity" class="form-control ">
-                            <input type="button" value="-" class="minus">
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            <input type="button"  @click="configurePrice('-')" value="-" class="minus"> 
+                            <i class="fa fa-angle-down" aria-hidden="true"></i> 
+                            <input type="number" step="1" min="0" v-model="product.count" name="product_quantity" disabled title="Qty" class="form-control"> 
+                            <input type="button" @click="configurePrice('+')" value="+" class="plus">
+                            <i class="fa fa-angle-up" aria-hidden="true"></i> 
                         </span> 
                         <a @click="addToCart()" rel="nofollow" class="theme_button color4 min_width_button add_to_cart_button">
                             Add to cart
@@ -97,11 +97,12 @@
         created() {
             this.product = JSON.parse(this.productjson);
             this.current_price = this.product.price;
+            this.product.count = 1;
             this.current_variation = this.product.prices[0].id;
         },
         methods:{
             addToCart(){
-                axios.post('/add-to-cart/'+this.product.id+'/'+this.current_variation).then((res)=>{
+                axios.post('/add-to-cart/'+this.product.id+'/'+this.current_variation+'?count='+this.product.count).then((res)=>{
                     
                     window.Event.$emit('addedToCart', this.product)
                     this.$toasted.show('Added: '+ this.product.name +' ('+ this.product.amount+ this.product.unit+')'+' to cart.').goAway(1500);
@@ -118,6 +119,22 @@
                         this.current_price = price.price
                     }
                 })
+            },
+            configurePrice(increment){
+                if(this.product.count == 1 && increment=="-")
+                {
+                    return false;
+                };
+                if(increment=='+'){
+                    
+                    this.product.count+=1;
+                }
+                else{
+                    this.product.count-=1;
+                }
+                this.product.count = this.product.count;
+                console.log(this.product.count);
+
             }
         }
     }

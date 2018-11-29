@@ -16,7 +16,7 @@ class Cart
         }
     }
 
-    public function add($item, $variation){
+    public function add($item, $variation, $count = null){
         
         $storedItem = $item;
         $storedItem->variation_id = $variation->id;
@@ -26,12 +26,16 @@ class Cart
             if(array_key_exists($variation->id, $this->items)){
                 
                 $storedItem = $this->items[$variation->id];
-                $storedItem->count++;
+                if($count){
+                    $storedItem->count+=$count;
+                }else{
+                    $storedItem->count++;
+                }
             }else{
-                $storedItem->count = 1;
+                $storedItem->count = $count?$count:1;
             }
         }else{
-            $storedItem->count = 1;
+            $storedItem->count = $count?$count:1;
         }
         $this->items[$variation->id] = $storedItem;
         $this->totalPrice += $storedItem['price'];

@@ -59,7 +59,7 @@
                 <a class="theme_button color1" href="/product-list">Continue Shopping</a> 
                 <!-- <input type="submit" class="theme_button color4" name="update_cart" value="Update Cart">  -->
             </div>
-            <div class="cart-collaterals">
+            <div class="cart-collaterals" v-if='products.length > 0'>
                 <div class="cart_totals">
                     <h4>Cart Totals</h4>
                     <table class="table">
