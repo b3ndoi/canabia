@@ -34,6 +34,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/products', 'ProductController@store')->name('product.store');
     Route::get('/products', 'ProductController@index')->name('product.index');
 
+    Route::get('/orders', 'OrderController@index')->name('orders.index');
+
     Route::get('/newsletters', 'NewsletterController@index')->name('newsletter.index');
     Route::get('/newsletter', 'NewsletterController@export')->name('newsletter.export');
 });
@@ -51,8 +53,11 @@ Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
 
 
 Route::get('/my-cart', 'CartController@myCart')->name('cart.my_cart');
+Route::get('/checkout', 'CartController@checkout')->name('cart.checkout');
+Route::post('/checkout', 'CartController@checkoutSubmit')->name('cart.checkout_submit');
 
 Route::post('/add-to-cart/{id}/{var_id}', 'CartController@addToCart')->name('product.add_to_cart');
+Route::post('/update-cart', 'CartController@updateCart')->name('product.update_cart');
 Route::post('/remove-from-cart/{id}/{var_id}', 'CartController@removeFromCart')->name('product.remove_from_cart');
 Route::get('/cart', 'CartController@currentCart')->name('cart.current_cart');
 

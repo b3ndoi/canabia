@@ -51,6 +51,13 @@ class Cart
             }
         }
     }
+    public function updateCartCount($updates){
+        
+        foreach($updates as $update){
+            $this->items[$update['variation_id']]['count'] = $update['count'];
+        }
+        return true;
+    }
 
 
     public function getItems(){

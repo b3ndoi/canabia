@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Variaton;
 use App\Cart;
+use App\CartRepo;
+use App\CartProducts;
 use Session;
 class CartController extends Controller
 {
@@ -50,5 +52,58 @@ class CartController extends Controller
         $cart = $request->session()->get('cart');
 
         return $cart->items;
+    }
+    public function updateCart(Request $request){
+        
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        
+        $cart = new Cart($oldCart);
+        $cart->updateCartCount($request->products);
+        return $request->all();
+    }
+
+
+    public function checkout(Request $request){
+        
+        $cart = Session::has('cart')? Session::get('cart'):null;
+        if(!$cart){
+            return redirect('/product-list');
+        }
+        return view('cart.checkout');
+    }
+    public function checkoutSubmit(Request $request){
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+        ]);
+
+        $cart = Session::get('cart');
+        $cart = $cart->getItems();
+
+        $cartStore = new CartRepo;
+        $cartStore->first_name = $request->first_name;
+        $cartStore->last_name = $request->last_name;
+        $cartStore->email = $request->email;
+        $cartStore->save();
+
+        foreach($cart as $product){
+            $cart_product = new CartProducts;
+            $cart_product->cart_id = $cartStore->id;
+            $cart_product->product_id = $product['id'];
+            $cart_product->product_name = $product['name'];
+            $cart_product->product_price = $product['price'];
+            $cart_product->product_amount = $product['amount'];
+            $cart_product->product_unit = $product['unit'];
+            $cart_product->product_count = $product['count'];
+            $cart_product->save();
+        }
+        $request->session()->forget('cart' );
+        // if(!$cart){
+        //     return redurect('/product-list');
+        // }
+        // $cart = $cart->getItems();
+        return $request->all();
     }
 }

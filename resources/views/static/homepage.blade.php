@@ -36,7 +36,7 @@
         </div>
         <!-- eof flexslider -->
     </section>
-    <section class="ls section_offset_teasers section_padding_top_10 section_padding_bottom_10">
+    <!-- <section class="ls section_offset_teasers section_padding_top_10 section_padding_bottom_10">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 to_animate no_appear_delay" data-animation="fadeInDown" data-delay="600">
@@ -69,26 +69,18 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <section id="about" class="ls section_padding_top_100 section_padding_bottom_130 columns_margin_bottom_20">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-12"> <span class="small-text big highlight4">
-            Who is marijuana factory?
-        </span>
-                    <h2 class="section_header">History About Factory</h2>
+                <div class="col-md-3 col-sm-12"> 
+                    <span class="small-text big highlight4">
+                        Who is Charies Cannabis?
+                    </span>
+                    <h2 class="section_header">About Charies Cannabis</h2>
                 </div>
                 <div class="col-md-6 col-sm-8">
-                    <p class="bold grey">We are a Marijuana Dispensary - Family Owned &amp; Operated Tier III Producer &amp; Processor located Colorado. </p>
-                    <p>From seed to sale, we take pride in our cannabis to ensure a smooth experience with attention to detail and quality. We have established ourselves along various points in the cannabis, industrial hemp, and related services supply chain and related
-                        services supply chain.</p>
-                </div>
-                <div class="col-md-3 col-sm-4">
-                    <div class="person_bio">
-                        <div class="avatar"> <img src="images/faces/01.jpg" alt=""> </div>
-                        <div class="person_name grey"> Carlos Lawson </div> <span class="small-text highlight4">
-                Founder of factory
-            </span> </div>
+                    <p class="bold grey">All our products are organic, no pesticides and or chemicals are used in growing our plants. Furthermore, we strictly respect the laws of each country and do not exceed the amount of THC allowed by law.</p>
                 </div>
             </div>
         </div>

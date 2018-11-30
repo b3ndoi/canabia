@@ -6,6 +6,7 @@ namespace App;
 
 class CartProducts extends Model
 {
+    protected $table = "products_cart";
     public function product(){
         return belongsTo('App\Product', 'product_id');
     }

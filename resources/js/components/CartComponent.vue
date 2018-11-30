@@ -58,6 +58,12 @@
             <div class="cart-buttons"> 
                 <a class="theme_button color1" href="/product-list">Continue Shopping</a> 
                 <!-- <input type="submit" class="theme_button color4" name="update_cart" value="Update Cart">  -->
+                <a class="theme_button color1" v-if="changes" @click="updateCount()">Save</a> 
+                <a class="theme_button color1" @click="continueCheckout()">
+                    {{changes?'Save &':''}}
+                    Checkout
+                </a> 
+
             </div>
             <div class="cart-collaterals" v-if='products.length > 0'>
                 <div class="cart_totals">
@@ -84,6 +90,7 @@
             return {
                 products:[],
                 test:[],
+                changes: false,
                 subtotal: 0,
             }
         },
@@ -135,7 +142,30 @@
                     
                 })
             },
+            updateCount(){
+
+                axios.post('/update-cart', {
+                    products: this.products
+                }).then((res)=>{
+                    this.changes = false;
+                    console.log(res.data)
+                })
+
+            },
+            continueCheckout(){
+                if(this.changes){
+                    axios.post('/update-cart', {
+                    products: this.products
+                    }).then((res)=>{
+                        this.changes = false;
+                        console.log(res.data)
+                        window.location.href = "/checkout";
+                    })
+                }
+                window.location.href = "/checkout";
+            },
             configurePrice(payload, increment){
+                this.changes = true;
                 if(payload.count == 1 && increment=="-")
                 {
                     return false;

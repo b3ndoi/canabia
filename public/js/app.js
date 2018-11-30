@@ -14027,6 +14027,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_toasted___default.a);
 
 Vue.component('newsletter-component', __webpack_require__(41));
 Vue.component('my-cart-count', __webpack_require__(44));
+Vue.component('checkout-component', __webpack_require__(70));
 Vue.component('product', __webpack_require__(47));
 Vue.component('single-product', __webpack_require__(50));
 Vue.component('contact', __webpack_require__(53));
@@ -49561,12 +49562,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             products: [],
             test: [],
+            changes: false,
             subtotal: 0
         };
     },
@@ -49621,7 +49629,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             });
         },
+        updateCount: function updateCount() {
+            var _this4 = this;
+
+            axios.post('/update-cart', {
+                products: this.products
+            }).then(function (res) {
+                _this4.changes = false;
+                console.log(res.data);
+            });
+        },
+        continueCheckout: function continueCheckout() {
+            var _this5 = this;
+
+            if (this.changes) {
+                axios.post('/update-cart', {
+                    products: this.products
+                }).then(function (res) {
+                    _this5.changes = false;
+                    console.log(res.data);
+                    window.location.href = "/checkout";
+                });
+            }
+            window.location.href = "/checkout";
+        },
         configurePrice: function configurePrice(payload, increment) {
+            this.changes = true;
             if (payload.count == 1 && increment == "-") {
                 return false;
             }
@@ -49821,7 +49854,50 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "cart-buttons" }, [
+        _c(
+          "a",
+          {
+            staticClass: "theme_button color1",
+            attrs: { href: "/product-list" }
+          },
+          [_vm._v("Continue Shopping")]
+        ),
+        _vm._v(" "),
+        _vm.changes
+          ? _c(
+              "a",
+              {
+                staticClass: "theme_button color1",
+                on: {
+                  click: function($event) {
+                    _vm.updateCount()
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "theme_button color1",
+            on: {
+              click: function($event) {
+                _vm.continueCheckout()
+              }
+            }
+          },
+          [
+            _vm._v(
+              "\r\n                    " +
+                _vm._s(_vm.changes ? "Save &" : "") +
+                "\r\n                    Checkout\r\n                "
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _vm.products.length > 0
         ? _c("div", { staticClass: "cart-collaterals" }, [
@@ -49872,21 +49948,6 @@ var staticRenderFns = [
         _c("td", { staticClass: "product-remove" }, [_vm._v(" ")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cart-buttons" }, [
-      _c(
-        "a",
-        {
-          staticClass: "theme_button color1",
-          attrs: { href: "/product-list" }
-        },
-        [_vm._v("Continue Shopping")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -49903,6 +49964,606 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(71)
+/* template */
+var __vue_template__ = __webpack_require__(72)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/CheckoutComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ed2d7008", Component.options)
+  } else {
+    hotAPI.reload("data-v-ed2d7008", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            products: [],
+            checkout: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                phone: ''
+            },
+            errors: [],
+            submited: false,
+            subtotal: 0
+        };
+    },
+    created: function created() {
+        this.getProducts();
+    },
+
+    methods: {
+        getProducts: function getProducts() {
+            var _this = this;
+
+            axios.get('/cart').then(function (res) {
+                var prods = Object.values(res.data);
+                _this.products = prods.map(function (prod) {
+                    _this.subtotal = _this.subtotal + parseFloat(prod.price) * parseFloat(prod.count);
+                    return prod;
+                });
+            });
+        },
+        submitCheckout: function submitCheckout() {
+            var _this2 = this;
+
+            this.submited = true;
+            axios.post('/checkout', this.checkout).then(function (res) {
+
+                // this.full_name = '';
+                // this.email = '';
+                // this.submited = false;
+                // this.errors = [];
+                // this.subscribedAlert();
+            }).catch(function (errors) {
+                _this2.errors = errors.response.data.errors;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-sm-12 col-md-6 col-lg-6" }, [
+      _c("h2", [_vm._v("Billing Info")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "form-horizontal checkout shop-checkout",
+          attrs: { role: "form" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submitCheckout($event)
+            },
+            keydown: function($event) {
+              _vm.submited = false
+            }
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "form-group validate-required",
+              attrs: { id: "billing_first_name_field" }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkout.first_name,
+                      expression: "checkout.first_name"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: {
+                    type: "text",
+                    name: "billing_first_name",
+                    id: "billing_first_name",
+                    placeholder: "",
+                    value: ""
+                  },
+                  domProps: { value: _vm.checkout.first_name },
+                  on: {
+                    keydown: function($event) {
+                      delete _vm.errors.first_name
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.checkout, "first_name", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.first_name
+                  ? _c("span", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.first_name[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "form-group validate-required",
+              attrs: { id: "billing_last_name_field" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkout.last_name,
+                      expression: "checkout.last_name"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: {
+                    type: "text",
+                    name: "billing_last_name",
+                    id: "billing_last_name",
+                    placeholder: "",
+                    value: ""
+                  },
+                  domProps: { value: _vm.checkout.last_name },
+                  on: {
+                    keydown: function($event) {
+                      delete _vm.errors.last_name
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.checkout, "last_name", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.last_name
+                  ? _c("span", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.last_name[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "form-group validate-required validate-email",
+              attrs: { id: "billing_email_field" }
+            },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkout.email,
+                      expression: "checkout.email"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: {
+                    type: "text",
+                    name: "billing_email",
+                    id: "billing_email",
+                    placeholder: "",
+                    value: ""
+                  },
+                  domProps: { value: _vm.checkout.email },
+                  on: {
+                    keydown: function($event) {
+                      delete _vm.errors.email
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.checkout, "email", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.email
+                  ? _c("span", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.email[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "form-group validate-required validate-phone",
+              attrs: { id: "billing_phone_field" }
+            },
+            [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkout.phone,
+                      expression: "checkout.phone"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: {
+                    type: "text",
+                    name: "billing_phone",
+                    id: "billing_phone",
+                    placeholder: "",
+                    value: ""
+                  },
+                  domProps: { value: _vm.checkout.phone },
+                  on: {
+                    keydown: function($event) {
+                      delete _vm.errors.phone
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.checkout, "phone", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.phone
+                  ? _c("span", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.phone[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(4)
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("aside", { staticClass: "col-sm-12 col-md-6 col-lg-6" }, [
+      _c(
+        "h3",
+        { staticClass: "widget-title", attrs: { id: "order_review_heading" } },
+        [_vm._v("Your order")]
+      ),
+      _vm._v(" "),
+      _c("div", [
+        _c("table", { staticClass: "table " }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.products, function(product) {
+              return _c("tr", { key: product.id, staticClass: "cart_item" }, [
+                _c("td", { staticClass: "product-name" }, [
+                  _vm._v(
+                    " " +
+                      _vm._s(product.name) +
+                      "(" +
+                      _vm._s(product.amount) +
+                      _vm._s(product.unit) +
+                      ") "
+                  ),
+                  _c("span", { staticClass: "product-quantity" }, [
+                    _vm._v("× " + _vm._s(product.count))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "product-total" }, [
+                  _c("span", { staticClass: "amount grey" }, [
+                    _vm._v("$" + _vm._s(product.price * product.count))
+                  ])
+                ])
+              ])
+            })
+          ),
+          _vm._v(" "),
+          _c("tfoot", [
+            _c("tr", { staticClass: "cart-subtotal" }, [
+              _c("td", [_vm._v("Subtotal:")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "amount grey" }, [
+                  _vm._v("$" + _vm._s(_vm.subtotal))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", { staticClass: "order-total" }, [
+              _c("td", [_vm._v("Total:")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("span", { staticClass: "amount grey" }, [
+                  _c("strong", [_vm._v("$" + _vm._s(_vm.subtotal))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label",
+        attrs: { for: "billing_first_name" }
+      },
+      [
+        _c("span", { staticClass: "grey" }, [_vm._v("First Name:")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "required" }, [_vm._v("*")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label",
+        attrs: { for: "billing_last_name" }
+      },
+      [
+        _c("span", { staticClass: "grey" }, [_vm._v("Last Name:")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "required" }, [_vm._v("*")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label",
+        attrs: { for: "billing_email" }
+      },
+      [
+        _c("span", { staticClass: "grey" }, [_vm._v("Email Address:")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "required" }, [_vm._v("*")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label",
+        attrs: { for: "billing_phone" }
+      },
+      [
+        _c("span", { staticClass: "grey" }, [_vm._v("Phone:")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "required" }, [_vm._v("*")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "place-order" }, [
+        _c("input", {
+          staticClass: "theme_button color4",
+          attrs: {
+            type: "submit",
+            name: "checkout_place_order",
+            id: "place_order",
+            value: "Place order"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("td", { staticClass: "product-name" }, [_vm._v("Product")]),
+        _vm._v(" "),
+        _c("td", { staticClass: "product-total" }, [_vm._v("Total")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ed2d7008", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
