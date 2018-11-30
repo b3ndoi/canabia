@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    $products = App\Product::with(['category', 'prices'])->latest()->limit(9)->get();
-    return view('static.homepage', compact('products'));
-});
+Route::get('/', 'StaticController@homepage');
 
 Auth::routes();
 

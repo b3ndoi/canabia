@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Mail;
 
 class StaticController extends Controller
 {
+    public function homepage(){
+        $products = \App\Product::with(['category', 'prices'])->latest()->limit(9)->get();
+        $categories = \App\Category::has('products')->get();
+        return view('static.homepage', compact('products', 'categories'));
+    }
     public function aboutShow(){
         return view('static.about');
     }

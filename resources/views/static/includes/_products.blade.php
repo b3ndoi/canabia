@@ -7,10 +7,9 @@
                 <h2 class="section_header">Buy Cannabis Here</h2>
                 <div class="widget widget_categories topmargin_50">
                     <ul class="greylinks color4">
-                        <li class=""> <a href="blog-left.html">Cannabis</a> </li>
-                        <li class=""> <a href="blog-left.html">Concentrates</a> </li>
-                        <li class=""> <a href="blog-left.html">Flowers</a> </li>
-                        <li class=""> <a href="blog-left.html">Pre-Rolls</a> </li>
+                        @foreach($categories as $category)
+                        <li class=""> <a href="/product-list?category_id={{$category->id}}">{{$category->name}}</a> </li>
+                        @endforeach
                     </ul>
                 </div>
                 <p class="topmargin_40"> <a href="{{route('product.indexFront')}}" class="theme_button color4">
