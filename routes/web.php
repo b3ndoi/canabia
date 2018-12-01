@@ -32,6 +32,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/products', 'ProductController@index')->name('product.index');
 
     Route::get('/orders', 'OrderController@index')->name('orders.index');
+    Route::get('/orders/{id}', 'OrderController@show')->name('orders.show');
 
     Route::get('/newsletters', 'NewsletterController@index')->name('newsletter.index');
     Route::get('/newsletter', 'NewsletterController@export')->name('newsletter.export');

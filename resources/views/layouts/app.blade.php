@@ -59,7 +59,7 @@
                                 <a class="nav-link" href="{{ route('newsletter.index') }}">Newsletter</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('newsletter.index') }}">Orders</a>
+                                <a class="nav-link" href="{{ route('orders.index') }}">Orders</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

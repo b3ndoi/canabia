@@ -59,7 +59,7 @@
                 <a class="theme_button color1" href="/product-list">Continue Shopping</a> 
                 <!-- <input type="submit" class="theme_button color4" name="update_cart" value="Update Cart">  -->
                 <a class="theme_button color1" v-if="changes" @click="updateCount()">Save</a> 
-                <a class="theme_button color1" @click="continueCheckout()">
+                <a class="theme_button color1" v-if='products.length > 0' @click="continueCheckout()">
                     {{changes?'Save &':''}}
                     Checkout
                 </a> 

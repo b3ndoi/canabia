@@ -1,7 +1,9 @@
-<div>
-    From: {{ $email }}<br>
-    Phone: {{ $phone }}<br>
-    Subject: {{$subject}}<br>
-    <br>
-    <p>{{$messages}}</p>
-</div>
+@component('mail::message')
+#   {{ $email }
+
+Phone: {{ $phone }}<br>
+Subject: {{$subject}}<br>
+<br>
+<p>{{$messages}}</p>
+
+@endcomponent

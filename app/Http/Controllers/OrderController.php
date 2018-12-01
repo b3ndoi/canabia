@@ -15,4 +15,16 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
         
     }
+    public function show($id){
+        $order = CartRepo::with(['products'])->findOrFail($id);
+
+        $total = 0;
+
+        foreach($order->products as $product){
+            $total += $product->product_price*$product->product_count;
+        }
+
+        return view('orders.show', compact('order', 'total'));
+        
+    }
 }

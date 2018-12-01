@@ -86,6 +86,7 @@
 </template>
 
 <script>
+    import swal from 'sweetalert2';
     export default {
         data(){
             return {
@@ -102,6 +103,9 @@
             }
         },
         created() {
+            
+                
+                
             this.getProducts();
         },
         methods:{
@@ -120,7 +124,14 @@
                 this.submited = true;
                 axios.post('/checkout',this.checkout)
                     .then((res)=>{
-                        
+                        swal(
+                            'Order successfuly receved!',
+                            'We will contact you shortly!',
+                            'success'
+                        );
+                        setTimeout(()=>{
+                            window.location.href ='/'
+                        }, 2000);
                         // this.full_name = '';
                         // this.email = '';
                         // this.submited = false;

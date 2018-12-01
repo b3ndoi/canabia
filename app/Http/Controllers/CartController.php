@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewOrder;
+use App\Mail\NewOrderUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Product;
 use App\Variaton;
 use App\Cart;
@@ -99,11 +102,18 @@ class CartController extends Controller
             $cart_product->product_count = $product['count'];
             $cart_product->save();
         }
+
+        $message = $request->all();
+
+        Mail::to($request->email)->send(new NewOrderUser(collect($cart), collect($request->all)));
+        Mail::to('admin@test.com')->send(new NewOrder(collect($cart), collect($request->all)));
+
         $request->session()->forget('cart' );
         // if(!$cart){
         //     return redurect('/product-list');
         // }
         // $cart = $cart->getItems();
+        
         return $request->all();
     }
 }

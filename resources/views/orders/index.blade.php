@@ -20,24 +20,13 @@
                                 <th>Full name</th>
                                 <th>Email</th>
                                 <th>Products</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($orders as $order)
-                                <tr>
-                                    <td>
-                                    {{$order->last_name}} {{$order->first_name}}
-                                    </td>
-                                    <td>
-                                        {{$order->email}}
-                                    </td>
-                                    <td>{{$order->products()->count()}}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-success">Finished</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                <order orderjson="{{$order}}"></order>
                             @endforeach
                         </tbody>
                     </table>
