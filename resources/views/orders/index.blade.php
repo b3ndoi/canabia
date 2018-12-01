@@ -26,7 +26,19 @@
                         </thead>
                         <tbody>
                             @foreach($orders as $order)
-                                <order orderjson="{{$order}}"></order>
+                            <tr>
+                                <td>
+                                <a href="/admin/orders/{{$order->id}}">{{$order->last_name}} {{$order->first_name}}</a>
+                                </td>
+                                <td>
+                                    {{$order->email}}
+                                </td>
+                                <td>{{$order->products()->count()}}</td>
+                                <td><span class="{{$order->delivered=='1'?'badge badge-success':'badge badge-danger'}}">{{$order->delivered=='1'?'Deliverd':'Still not delivered'}}</span></td>
+                                <td>
+                                    <a href="#" class="btn btn-success">Delivered</a>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
