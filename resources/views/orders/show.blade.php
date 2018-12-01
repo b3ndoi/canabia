@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Order: {{$order->last_name}} {{$order->first_name}}</div>
+                <div class="card-header">Order: {{$order->last_name}} {{$order->first_name}} <{{$order->email}}></div>
 
                 <div class="card-body">
 
@@ -27,7 +27,7 @@
                             @foreach($order->products as $product)
                                 <tr>
                                     <td>
-                                    {{$product->product_name}}({{$product->product_amount}})
+                                    {{$product->product_name}}({{$product->product_amount}}{{$product->unit}})
                                     </td>
                                     <td>
                                         ${{$product->product_price}}

@@ -89,6 +89,7 @@ class CartController extends Controller
         $cartStore->first_name = $request->first_name;
         $cartStore->last_name = $request->last_name;
         $cartStore->email = $request->email;
+        $cartStore->phone = $request->phone;
         $cartStore->save();
 
         foreach($cart as $product){

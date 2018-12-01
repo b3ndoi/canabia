@@ -19,6 +19,7 @@
                             <tr>
                                 <th>Full name</th>
                                 <th>Email</th>
+                                <th>Phone</th>
                                 <th>Products</th>
                                 <th>Status</th>
                                 <th></th>
@@ -32,6 +33,9 @@
                                 </td>
                                 <td>
                                     {{$order->email}}
+                                </td>
+                                <td>
+                                    {{$order->phone}}
                                 </td>
                                 <td>{{$order->products()->count()}}</td>
                                 <td><span class="{{$order->delivered=='1'?'badge badge-success':'badge badge-danger'}}">{{$order->delivered=='1'?'Deliverd':'Still not delivered'}}</span></td>
