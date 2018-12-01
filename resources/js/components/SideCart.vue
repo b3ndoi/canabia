@@ -34,8 +34,6 @@
             </p>
             <p class="buttons" v-if="products.length > 0">
                 <a href="/my-cart" class="theme_button color4 min_width_button">View cart</a> 
-            </p>
-            <p class="buttons" v-if="products.length > 0">
                 <a href="/checkout" class="theme_button color4 min_width_button">Checkout</a> 
             </p>
         </div>

@@ -50025,8 +50025,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -50178,12 +50176,8 @@ var render = function() {
                 attrs: { href: "/my-cart" }
               },
               [_vm._v("View cart")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.products.length > 0
-        ? _c("p", { staticClass: "buttons" }, [
+            ),
+            _vm._v(" "),
             _c(
               "a",
               {
