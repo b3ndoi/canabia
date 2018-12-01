@@ -31,6 +31,6 @@ class NewOrderUser extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.new-order');
+        return $this->from('info@charliescannabis.com')->markdown('emails.new-order');
     }
 }
