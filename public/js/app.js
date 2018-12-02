@@ -47770,6 +47770,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         });
         Event.$on('removedFromCart', function (payload) {
+            _this.products = _this.products.filter(function (item) {
+                if (product.variation_id != payload.variation_id) {
+                    return item;
+                }
+            });
             _this.product_count--;
         });
     },

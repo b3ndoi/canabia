@@ -35,6 +35,11 @@
                 
             });
             Event.$on('removedFromCart', (payload) => {
+                this.products = this.products.filter(item => {
+                    if(product.variation_id != payload.variation_id){
+                        return item
+                    }
+                })
                 this.product_count--;
             });
         },
