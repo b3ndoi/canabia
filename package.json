@@ -20,7 +20,9 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "run": "^1.4.0",
         "sweetalert2": "^7.29.2",
-        "vue-toasted": "^1.1.25"
+        "vue-toasted": "^1.1.25",
+        "watch": "^1.0.2"
     }
 }

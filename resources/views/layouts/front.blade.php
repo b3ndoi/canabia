@@ -109,7 +109,7 @@
 										</li>
 										<li class="{{ Request::is('my-cart') ? 'active' : '' }}"> 
 											<a href="/my-cart">My Cart 
-												<!-- <my-cart-count></my-cart-count> -->
+												<my-cart-count></my-cart-count>
 											</a>
 										</li>
 										<li class="{{ Request::is('contact-us') ? 'active' : '' }}"> 

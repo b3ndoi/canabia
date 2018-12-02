@@ -20,7 +20,8 @@
                                 <th>Full name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Products</th>
+                                <th>Products</th> 
+                                 
                                 <th>Status</th>
                                 <th></th>
                             </tr>

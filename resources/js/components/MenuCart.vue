@@ -10,14 +10,29 @@
     export default {
         data(){
             return {
-                
+                products:[],
                 product_count: 0,
             }
         },
         created() {
             this.getProducts();
             Event.$on('addedToCart', (payload) => {
-                this.product_count++;
+                var found = this.products.find((element)=> {
+                    return element.variation_id == payload.variation_id;
+                });
+                if(!found){
+                    payload.count = 1;
+                    this.products.push(payload)
+                    this.product_count++;
+                }else{
+                    this.products = this.products.map((element)=>{
+                        if(element.variation_id == payload.variation_id){
+                            element.count++;
+                        }
+                        return element;
+                    });
+                }
+                
             });
             Event.$on('removedFromCart', (payload) => {
                 this.product_count--;
