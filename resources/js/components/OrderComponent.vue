@@ -1,17 +1,16 @@
 <template>
-    <tr>
-        <td>
-        <a :href="'/admin/orders/'+order.id">{{order.last_name}} {{order.first_name}}</a>
-        </td>
-        <td>
-            {{order.email}}
-        </td>
-        <td>{{order.products.length}}</td>
-        <td><span :class="order.delivered=='1'?'badge badge-success':'badge badge-danger'">{{order.delivered=='1'?'Deliverd':'Still not delivered'}}</span></td>
-        <td>
-            <a href="#" @click="changeStatus()" class="btn btn-success">Delivered</a>
-        </td>
-    </tr>
+<table class="table">
+    
+    <button
+    @click="changeStatus(order)"
+    :class="order.delivered != 0?'btn btn-warning':'btn btn-success'"
+    @disabled="disabled"
+    >
+        {{order.delivered != "0"?'Still Not Delivered':'Delivered'}}
+    </button>
+            
+</table>
+    
 </template>
 
 <script>
@@ -19,19 +18,23 @@
         props: ['orderjson'],
         data(){
             return {
-                order:{},
+                order:[],
+                disabled: false
             }
         },
         created() {
             this.order = JSON.parse(this.orderjson);
+            
         },
         methods:{
+            
             changeStatus(){
-                // axios.post('/add-to-cart/'+this.product.id+'/'+this.current_variation+'?count='+this.product.count).then((res)=>{
-                    
-                //     window.Event.$emit('addedToCart', this.product)
-                //     this.$toasted.show('Added: '+ this.product.name +' ('+ this.product.amount+ this.product.unit+')'+' to cart.').goAway(1500);
-                // })
+                this.disabled = true;
+                axios.post('/admin/orders/'+this.order.id).then((res)=>{
+                    this.disabled = false;
+                    this.order.delivered = res.data;
+                    this.order = this.order;
+                })
                 
             }
         }

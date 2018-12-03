@@ -33,9 +33,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/orders', 'OrderController@index')->name('orders.index');
     Route::get('/orders/{id}', 'OrderController@show')->name('orders.show');
+    Route::post('/orders/{id}', 'OrderController@changeOrderStatus')->name('orders.status');
 
     Route::get('/newsletters', 'NewsletterController@index')->name('newsletter.index');
     Route::get('/newsletter', 'NewsletterController@export')->name('newsletter.export');
+    Route::get('/newsletter/{id}', 'NewsletterController@delete')->name('newsletter.delete');
 });
 
 

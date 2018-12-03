@@ -30,7 +30,7 @@
                                     <td>{{$newsletter->full_name}}</td>
                                     <td>{{$newsletter->email}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-danger">Remove</a>
+                                        <a href="/admin/newsletter/{{$newsletter->id}}" class="btn btn-danger">Remove</a>
                                     </td>
                                 </tr>
                             @endforeach

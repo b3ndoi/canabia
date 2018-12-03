@@ -51345,13 +51345,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['orderjson'],
     data: function data() {
         return {
-            order: {}
+            order: [],
+            disabled: false
         };
     },
     created: function created() {
@@ -51360,12 +51360,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         changeStatus: function changeStatus() {
-            // axios.post('/add-to-cart/'+this.product.id+'/'+this.current_variation+'?count='+this.product.count).then((res)=>{
+            var _this = this;
 
-            //     window.Event.$emit('addedToCart', this.product)
-            //     this.$toasted.show('Added: '+ this.product.name +' ('+ this.product.amount+ this.product.unit+')'+' to cart.').goAway(1500);
-            // })
-
+            this.disabled = true;
+            axios.post('/admin/orders/' + this.order.id).then(function (res) {
+                _this.disabled = false;
+                _this.order.delivered = res.data;
+                _this.order = _this.order;
+            });
         }
     }
 });
@@ -51378,51 +51380,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("td", [
-      _c("a", { attrs: { href: "/admin/orders/" + _vm.order.id } }, [
-        _vm._v(_vm._s(_vm.order.last_name) + " " + _vm._s(_vm.order.first_name))
-      ])
-    ]),
-    _vm._v(" "),
-    _c("td", [_vm._v("\n        " + _vm._s(_vm.order.email) + "\n    ")]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.order.products.length))]),
-    _vm._v(" "),
-    _c("td", [
-      _c(
-        "span",
-        {
-          class:
-            _vm.order.delivered == "1"
-              ? "badge badge-success"
-              : "badge badge-danger"
-        },
-        [
-          _vm._v(
+  return _c("table", { staticClass: "table" }, [
+    _c(
+      "button",
+      {
+        class: _vm.order.delivered != 0 ? "btn btn-warning" : "btn btn-success",
+        on: {
+          click: function($event) {
+            _vm.changeStatus(_vm.order)
+          },
+          disabled: _vm.disabled
+        }
+      },
+      [
+        _vm._v(
+          "\r\n        " +
             _vm._s(
-              _vm.order.delivered == "1" ? "Deliverd" : "Still not delivered"
-            )
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("td", [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-success",
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              _vm.changeStatus()
-            }
-          }
-        },
-        [_vm._v("Delivered")]
-      )
-    ])
+              _vm.order.delivered != "0" ? "Still Not Delivered" : "Delivered"
+            ) +
+            "\r\n    "
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []

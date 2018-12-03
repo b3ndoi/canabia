@@ -35,4 +35,12 @@ class NewsletterController extends Controller
     {
         return Excel::download(new NewsletterExport, 'newsletter.xlsx');
     }
+
+    public function delete($id){
+        $newsletter = Newsletter::findOrFail($id);
+        
+        $newsletter->delete();
+
+        return redirect('/admin/newsletters');
+    }
 }

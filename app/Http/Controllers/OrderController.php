@@ -27,4 +27,12 @@ class OrderController extends Controller
         return view('orders.show', compact('order', 'total'));
         
     }
+
+    public function changeOrderStatus(Request $request, $id){
+        $order = CartRepo::findOrFail($id);
+        $order->delivered = !$order->delivered;
+        $order->save();
+
+        return $order->delivered?1:0;
+    }
 }
