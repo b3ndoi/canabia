@@ -52826,34 +52826,40 @@ var render = function() {
         })
       ),
       _vm._v(" "),
-      _c("p", { staticClass: "total" }, [
-        _c("strong", { staticClass: "grey" }, [_vm._v("Subtotal:")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "price" }, [
-          _vm._v("$" + _vm._s(_vm.subtotal))
-        ])
-      ]),
+      _vm.products.length > 0
+        ? _c("p", { staticClass: "total" }, [
+            _c("strong", { staticClass: "grey" }, [_vm._v("Subtotal:")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "price" }, [
+              _vm._v("$" + _vm._s(_vm.subtotal))
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm.products.length > 0
-        ? _c("p", { staticClass: "buttons" }, [
-            _c(
-              "a",
-              {
-                staticClass: "theme_button color4 min_width_button",
-                attrs: { href: "/my-cart" }
-              },
-              [_vm._v("View cart")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "theme_button color4 min_width_button",
-                attrs: { href: "/checkout" }
-              },
-              [_vm._v("Checkout")]
-            )
-          ])
+        ? _c(
+            "p",
+            { staticClass: "buttons", staticStyle: { display: "flex" } },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "theme_button color4 min_width_button",
+                  attrs: { href: "/my-cart" }
+                },
+                [_vm._v("View cart")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "theme_button color4 min_width_button",
+                  attrs: { href: "/checkout" }
+                },
+                [_vm._v("Checkout")]
+              )
+            ]
+          )
         : _vm._e()
     ])
   ])

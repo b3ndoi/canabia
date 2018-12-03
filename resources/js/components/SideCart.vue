@@ -28,11 +28,11 @@
                     </div>
                 </li>
             </ul>
-            <p class="total"> 
+            <p class="total" v-if="products.length > 0"> 
                 <strong class="grey">Subtotal:</strong> 
                 <span class="price">${{subtotal}}</span> 
             </p>
-            <p class="buttons" v-if="products.length > 0">
+            <p class="buttons" style="display: flex;" v-if="products.length > 0">
                 <a href="/my-cart" class="theme_button color4 min_width_button">View cart</a> 
                 <a href="/checkout" class="theme_button color4 min_width_button">Checkout</a> 
             </p>
