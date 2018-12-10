@@ -6,7 +6,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Products</div>
-
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="card-body">
                 <a href="{{ route('product.create') }}" class="btn btn-success mb-3">Create New Product</a>
 

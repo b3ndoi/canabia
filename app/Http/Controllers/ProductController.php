@@ -105,6 +105,8 @@ class ProductController extends Controller
             $var->amount = $vaiation['amount'];
             $var->save();
         }
+        $request->session()->flash('status', 'Product created successfuly!');
+
         return redirect('/admin/products');
     }
 
@@ -134,6 +136,7 @@ class ProductController extends Controller
 
         $categories = Category::all();
         $product = Product::with(['category', 'prices'])->where('slug', $slug)->first();
+        
         return view('products.edit', compact('categories', 'product'));
 
     }
@@ -189,7 +192,7 @@ class ProductController extends Controller
         $product->price = $request->price[0];
         $product->category_id = $request->category_id;
         $product->save();
-        
+        $request->session()->flash('status', 'Product edited successfuly!');
         // $vaiations = [];
         // for ($i=0; $i < count($request->price); $i++) {
         //     array_push($vaiations, [

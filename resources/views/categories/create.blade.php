@@ -8,11 +8,7 @@
                 <div class="card-header">Category Create</div>
 
                 <div class="card-body">
-                    <!-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif -->
+                   
                     <form action="{{ route('category.store') }}" method="post">
                         {{csrf_field()}}
                         <div class='form-group'>

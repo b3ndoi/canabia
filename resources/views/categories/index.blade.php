@@ -6,15 +6,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Category Create</div>
-
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="card-body">
                 <a href="{{ route('category.create') }}" class="btn btn-success">Create New Category</a>
 
-                    <!-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif -->
+                   
                     <table class="table">
                         <thead>
                             <tr>

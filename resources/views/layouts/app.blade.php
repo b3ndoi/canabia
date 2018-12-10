@@ -87,6 +87,13 @@
         <main class="py-4">
             @yield('content')
         </main>
+        
     </div>
+    <script>
+        
+        setTimeout(() => {
+            $('.alert.alert-success').remove()
+        }, 2500);
+    </script>
 </body>
 </html>
