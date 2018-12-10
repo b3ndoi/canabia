@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->category_id = $request->category_id;
         $category->save();
-        return back();
+        return redirect('/admin/categories');
     }
     public function edit(Category $category){
         

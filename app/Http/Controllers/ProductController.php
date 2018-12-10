@@ -107,7 +107,7 @@ class ProductController extends Controller
             $var->amount = $vaiation['amount'];
             $var->save();
         }
-        return back();
+        return redirect('/admin/products');
     }
 
     /**
@@ -206,7 +206,7 @@ class ProductController extends Controller
         //     $var->amount = $vaiation['amount'];
         //     $var->save();
         // }
-        return back();
+        return redirect('/admin/products');
     }
 
     /**
