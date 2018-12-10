@@ -51367,6 +51367,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.disabled = false;
                 _this.order.delivered = res.data;
                 _this.order = _this.order;
+                if (_this.order.delivered != 0) {
+                    window.$('#order-' + _this.order.id).removeClass('badge-danger');
+                    window.$('#order-' + _this.order.id).addClass('badge-success');
+                    window.$('#order-' + _this.order.id).text('Delivered');
+                } else {
+
+                    window.$('#order-' + _this.order.id).removeClass('badge-success');
+                    window.$('#order-' + _this.order.id).addClass('badge-danger');
+                    window.$('#order-' + _this.order.id).text('Still not delivered');
+                }
             });
         }
     }

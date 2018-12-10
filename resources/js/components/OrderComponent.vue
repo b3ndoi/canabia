@@ -34,6 +34,16 @@
                     this.disabled = false;
                     this.order.delivered = res.data;
                     this.order = this.order;
+                    if(this.order.delivered != 0){
+                    window.$('#order-'+this.order.id).removeClass('badge-danger')
+                    window.$('#order-'+this.order.id).addClass('badge-success') 
+                    window.$('#order-'+this.order.id).text('Delivered')
+                    }else{
+                       
+                    window.$('#order-'+this.order.id).removeClass('badge-success')
+                    window.$('#order-'+this.order.id).addClass('badge-danger')
+                    window.$('#order-'+this.order.id).text('Still not delivered')
+                    }
                 })
                 
             }

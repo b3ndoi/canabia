@@ -41,7 +41,7 @@
                                     {{$order->phone}}
                                 </td>
                                 <td>{{$order->products()->count()}}</td>
-                                <td><span class="{{$order->delivered=='1'?'badge badge-success':'badge badge-danger'}}">{{$order->delivered=='1'?'Deliverd':'Still not delivered'}}</span></td>
+                                <td><span id="order-{{$order->id}}" class="{{$order->delivered=='1'?'badge badge-success':'badge badge-danger'}}">{{$order->delivered=='1'?'Deliverd':'Still not delivered'}}</span></td>
                                 <td>
                                     <order orderjson="{{$order}}">
                                 </td>
