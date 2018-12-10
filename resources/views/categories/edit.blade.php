@@ -19,7 +19,12 @@
                         <div class='form-group'>
                             <label for='name'>Name</label>
                             <input type='text' class='form-control' id='name' name='name' value="{{old('name')?:$category->name}}" placeholder='Name'>
-                        </div>
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                       </div>
                         <div class='form-group'>
                             <label for='category_id'>Subcategory of:</label>
                             <select name="category_id"  class='form-control' id="category_id">

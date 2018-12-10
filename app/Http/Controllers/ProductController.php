@@ -149,15 +149,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'amount' => 'required',
-            'unit' => 'required',
-            'image' => 'required',
-            'category_id' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'price' => 'required',
+        //     'amount' => 'required',
+        //     'unit' => 'required',
+        //     'image' => 'required',
+        //     'category_id' => 'required',
+        // ]);
         $product = Product::where('slug', $slug)->first();
 
         if($request->file('image')){
@@ -167,9 +167,24 @@ class ProductController extends Controller
             $path = $request->file('image')->store('public/products');
             $product->image = $path;
         }
+        $product->prices()->delete();
 
-        $product->name = $request->name;
-        $product->unit = $request->unit;
+        $product->price = $request->price[0];
+        $product->amount = $request->amount[0];
+        $vaiations = [];
+        for ($i=0; $i < count($request->price); $i++) {
+            array_push($vaiations, [
+                'price' => $request->price[$i],
+                'amount' => $request->amount[$i],
+            ]);
+        }
+        foreach($vaiations as $vaiation){
+            $var = new Variaton;
+            $var->product_id = $product->id;
+            $var->price =$vaiation['price'];
+            $var->amount = $vaiation['amount'];
+            $var->save();
+        }
         $product->amount = $request->amount[0];
         $product->slug = $product->generateSlug($request->name);
         $product->description = $request->description;
