@@ -16,9 +16,9 @@
                     @endif -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <b>Full name:</b> {{$order->last_name}} {{$order->first_name}}
-                            <b>Email:</b> {{$order->email}}
-                            <b>Full name:</b> {{$order->phone}}
+                            <b>Full name:</b> {{$order->last_name}} {{$order->first_name}} <br>
+                            <b>Email:</b> {{$order->email}}<br>
+                            <b>Full name:</b> {{$order->phone}}<br>
                         
                         </div>
                     </div>
