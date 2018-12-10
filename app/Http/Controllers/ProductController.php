@@ -183,9 +183,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy( $id)
     {
-        //
+        $product = Product::where('id',$id)->first();
+        $product->delete();
+        return back();
     }
 
 

@@ -22,12 +22,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/categories', 'CategoryController@index')->name('category.index');
     Route::get('/categories/create', 'CategoryController@create')->name('category.create');
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('category.edit');
+    Route::get('/categories/{category}/delete', 'CategoryController@destroy')->name('category.dastroy');
     Route::put('/categories/{category}', 'CategoryController@update')->name('category.update');
     Route::post('/categories', 'CategoryController@store')->name('category.store');
 
     Route::get('/products/create', 'ProductController@create')->name('product.create');
     Route::get('/products/{slug}/edit', 'ProductController@edit')->name('product.edit');
     Route::put('/products/{slug}', 'ProductController@update')->name('product.update');
+    Route::get('/products/{product}/delete', 'ProductController@destroy')->name('product.destroy');
     Route::post('/products', 'ProductController@store')->name('product.store');
     Route::get('/products', 'ProductController@index')->name('product.index');
 

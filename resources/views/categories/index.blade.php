@@ -32,6 +32,7 @@
                                     <td>{{$category->products()->count()}}</td>
                                     <td>
                                         <a href="categories/{{$category->id}}/edit" class="btn btn-primary">Edit</a>
+                                        <a href="categories/{{$category->id}}/delete" onClick="if (! confirm('Are you sure you want to delete this category?\nYou will delete all category products as well')) { return false; }" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

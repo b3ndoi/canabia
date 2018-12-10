@@ -35,5 +35,9 @@ class CategoryController extends Controller
         return back();
 
     }
-    public function destroy(Category $category){}
+    public function destroy(Category $category){
+        $category->products()->delete();
+        $category->delete();
+        return back();
+    }
 }
