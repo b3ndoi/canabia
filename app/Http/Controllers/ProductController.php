@@ -72,15 +72,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'amount' => 'required',
-            'unit' => 'required',
-            'image' => 'required',
-            'category_id' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'price' => 'required',
+        //     'amount' => 'required',
+        //     'unit' => 'required',
+        //     'image' => 'required',
+        //     'category_id' => 'required',
+        // ]);
         $product = new Product;
         $product->name = $request->name;
         $product->slug = $product->generateSlug($request->name);
