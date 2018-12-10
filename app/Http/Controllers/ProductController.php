@@ -159,7 +159,7 @@ class ProductController extends Controller
         //     'category_id' => 'required',
         // ]);
         $product = Product::where('slug', $slug)->first();
-
+        $product->name = $request->name;
         if($request->file('image')){
             if($product->image){
                 $files = Storage::delete($product->image);
