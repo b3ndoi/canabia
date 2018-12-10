@@ -18,6 +18,11 @@
                         <div class='form-group'>
                             <label for='name'>Name</label>
                             <input type='text' class='form-control' id='name' name='name' placeholder='Name'>
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class='form-group'>
                             <label for='unit'>Unit</label>
@@ -38,10 +43,20 @@
                         <div class="form-group">
                           <label for="description">Description</label>
                           <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                          @if ($errors->has('description'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('description') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class='form-group'>
                             <label for='image'>Photo</label>
                             <input type='file' class='form-control-file' id='image' name='image'>
+                            @if ($errors->has('image'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('image') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <button class="btn btn-success" type="submit">Create</button>
                     </form>

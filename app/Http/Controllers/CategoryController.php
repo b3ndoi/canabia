@@ -29,17 +29,18 @@ class CategoryController extends Controller
         return back();
     }
     public function edit(Category $category){
-        $request->validate([
-            'name' => 'required',
-        ]);
+        
         $categories = Category::whereNull('category_id')->get();
         return view('categories.edit', compact('category', 'categories'));
     }
     public function update(Category $category, Request $request){
+        $request->validate([
+            'name' => 'required',
+        ]);
         $category->name = $request->name;
         $category->category_id = $request->category_id;
         $category->save();
-        return back();
+        return redirect('/admin/categories');
 
     }
     public function destroy(Category $category){
