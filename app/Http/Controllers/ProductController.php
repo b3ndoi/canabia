@@ -107,6 +107,7 @@ class ProductController extends Controller
         }
         $request->session()->flash('status', 'Product created successfuly!');
 
+        
         return redirect('/admin/products');
     }
 
