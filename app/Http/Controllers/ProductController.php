@@ -155,7 +155,6 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'unit' => 'required',
-            'image' => 'required',
             'category_id' => 'required',
         ]);
         $product = Product::where('slug', $slug)->first();
