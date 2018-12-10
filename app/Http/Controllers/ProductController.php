@@ -149,6 +149,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $slug)
     {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
+            'unit' => 'required',
+            'image' => 'required',
+            'category_id' => 'required',
+        ]);
         $product = Product::where('slug', $slug)->first();
 
         if($request->file('image')){

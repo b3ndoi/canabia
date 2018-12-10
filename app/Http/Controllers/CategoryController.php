@@ -18,6 +18,10 @@ class CategoryController extends Controller
         return view('categories.create', compact('categories'));
     }
     public function store(Request $request){
+
+        $request->validate([
+            'name' => 'required',
+        ]);
         $category = new Category;
         $category->name = $request->name;
         $category->category_id = $request->category_id;
@@ -25,6 +29,9 @@ class CategoryController extends Controller
         return back();
     }
     public function edit(Category $category){
+        $request->validate([
+            'name' => 'required',
+        ]);
         $categories = Category::whereNull('category_id')->get();
         return view('categories.edit', compact('category', 'categories'));
     }
