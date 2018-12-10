@@ -107,7 +107,7 @@ class ProductController extends Controller
         }
         $request->session()->flash('status', 'Product created successfuly!');
 
-        
+
         return redirect('/admin/products');
     }
 
@@ -151,15 +151,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'price' => 'required',
-        //     'amount' => 'required',
-        //     'unit' => 'required',
-        //     'image' => 'required',
-        //     'category_id' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'unit' => 'required',
+            'image' => 'required',
+            'category_id' => 'required',
+        ]);
         $product = Product::where('slug', $slug)->first();
         $product->name = $request->name;
         if($request->file('image')){
