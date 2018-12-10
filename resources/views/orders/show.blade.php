@@ -18,7 +18,7 @@
                         <div class="col-lg-12">
                             <b>Full name:</b> {{$order->last_name}} {{$order->first_name}} <br>
                             <b>Email:</b> {{$order->email}}<br>
-                            <b>Full name:</b> {{$order->phone}}<br>
+                            <b>Phone:</b> {{$order->phone}}<br>
                         
                         </div>
                     </div>
