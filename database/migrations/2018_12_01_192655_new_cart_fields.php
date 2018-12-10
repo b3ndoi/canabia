@@ -14,7 +14,7 @@ class NewCartFields extends Migration
     public function up()
     {
         Schema::table('cart', function (Blueprint $table) {
-            $table->string('phone');
+            $table->string('phone')->nullable();
         });
     }
 
