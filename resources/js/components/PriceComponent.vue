@@ -5,11 +5,11 @@
         <div class="row">
             <div class='form-group col-lg-6'>
                 <label>Amount</label>
-                <input type='text' class='form-control' id='amount'  v-model="first_price.amount" name='amount[]' placeholder='Amount'>
+                <input type='text' class='form-control' id='amount'  v-model="first_price.amount" name='amount[]'  required placeholder='Amount'>
             </div>
             <div class='form-group col-lg-6'>
                 <label >Price</label>
-                <input type='text' class='form-control' id='price'  v-model="first_price.price" name='price[]' placeholder='Price'>
+                <input type='text' class='form-control' id='price'  v-model="first_price.price" name='price[]' required placeholder='Price'>
             </div>
             
         </div>

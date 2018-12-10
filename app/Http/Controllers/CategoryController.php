@@ -19,9 +19,9 @@ class CategoryController extends Controller
     }
     public function store(Request $request){
 
-        // $request->validate([
-        //     'name' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required',
+        ]);
         $category = new Category;
         $category->name = $request->name;
         $category->category_id = $request->category_id;
@@ -34,9 +34,9 @@ class CategoryController extends Controller
         return view('categories.edit', compact('category', 'categories'));
     }
     public function update(Category $category, Request $request){
-        // $request->validate([
-        //     'name' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required',
+        ]);
         $category->name = $request->name;
         $category->category_id = $request->category_id;
         $category->save();

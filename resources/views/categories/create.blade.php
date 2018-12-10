@@ -13,21 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif -->
-                    <!-- @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    {{ $errors->has('name') }} -->
                     <form action="{{ route('category.store') }}" method="post">
                         {{csrf_field()}}
                         <div class='form-group'>
                             <label for='name'>Name</label>
-                            <input type='text' class='form-control' id='name' name='name' placeholder='Name'>
+                            <input type='text' class='form-control{{ $errors->has('name') ? ' is-invalid' : '' }}' id='name' name='name' placeholder='Name'>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>

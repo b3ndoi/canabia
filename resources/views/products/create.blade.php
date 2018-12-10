@@ -17,7 +17,7 @@
                         {{csrf_field()}}
                         <div class='form-group'>
                             <label for='name'>Name</label>
-                            <input type='text' class='form-control' id='name' name='name' placeholder='Name'>
+                            <input type='text' class='form-control{{ $errors->has('name') ? ' is-invalid' : '' }}' id='name' name='name' placeholder='Name'>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -32,6 +32,12 @@
                             </select>
                         </div>
                         <price-component prices=""></price-component>
+                        <!-- <span class="text-danger" >
+                            <strong>{{ $errors->first('amount[]') }}</strong>
+                        </span>
+                        <span class="text-danger" >
+                            <strong>{{ $errors->first('price[]') }}</strong>
+                        </span> -->
                         <div class='form-group'>
                             <label for='category_id'>Category</label>
                             <select name="category_id"  class='form-control' id="category_id">
@@ -42,7 +48,7 @@
                         </div>
                         <div class="form-group">
                           <label for="description">Description</label>
-                          <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                          <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" id="description" rows="3"></textarea>
                           @if ($errors->has('description'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -51,7 +57,7 @@
                         </div>
                         <div class='form-group'>
                             <label for='image'>Photo</label>
-                            <input type='file' class='form-control-file' id='image' name='image'>
+                            <input type='file' class='form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }}' id='image' name='image'>
                             @if ($errors->has('image'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('image') }}</strong>

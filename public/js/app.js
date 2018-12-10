@@ -52442,6 +52442,7 @@ var render = function() {
               type: "text",
               id: "amount",
               name: "amount[]",
+              required: "",
               placeholder: "Amount"
             },
             domProps: { value: _vm.first_price.amount },
@@ -52473,6 +52474,7 @@ var render = function() {
               type: "text",
               id: "price",
               name: "price[]",
+              required: "",
               placeholder: "Price"
             },
             domProps: { value: _vm.first_price.price },

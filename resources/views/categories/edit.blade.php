@@ -18,7 +18,7 @@
                         {{csrf_field()}}
                         <div class='form-group'>
                             <label for='name'>Name</label>
-                            <input type='text' class='form-control' id='name' name='name' value="{{old('name')?:$category->name}}" placeholder='Name'>
+                            <input type='text' class='form-control{{ $errors->has('name') ? ' is-invalid' : '' }}' id='name' name='name' value="{{old('name')?:$category->name}}" placeholder='Name'>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
